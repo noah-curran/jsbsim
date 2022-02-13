@@ -1,0 +1,5 @@
+<map id="SetAlphaDegIC" name="SetAlphaDegIC">
+<area shape="rect" id="node1" title="Sets angle of attack initial condition in degrees." alt="" coords="5,13,124,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#aab430a890b7eb995d69c0c042fca969a" title="Sets the initial angle of attack." alt="" coords="172,13,291,39"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGQuaternion.html#ab0e5564df2ba8ac3f2db0a760e64c564" title="Backward transformation matrix." alt="" coords="339,5,505,47"/>
+</map>

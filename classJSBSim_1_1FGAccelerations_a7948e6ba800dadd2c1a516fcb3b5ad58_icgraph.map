@@ -1,0 +1,4 @@
+<map id="GetPQRdot" name="GetPQRdot">
+<area shape="rect" id="node1" title="Retrieves the body axis angular acceleration vector." alt="" coords="235,13,328,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGOutputSocket.html#a0d7143a7146c3401f1c71e68d68097d6" title="Generates the output." alt="" coords="5,5,187,47"/>
+</map>

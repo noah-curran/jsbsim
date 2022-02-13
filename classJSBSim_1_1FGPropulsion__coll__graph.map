@@ -1,0 +1,12 @@
+<map id="FGPropulsion" name="FGPropulsion">
+<area shape="rect" id="node1" title="Propulsion management class." alt="" coords="468,192,576,219"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGModel.html" title="Base class for all scheduled JSBSim models." alt="" coords="323,107,403,133"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGModelFunctions.html" title="The model functions class provides the capability for loading, storing, and executing arbitrary funct..." alt="" coords="10,5,153,32"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGPropertyManager.html" title=" " alt="" coords="5,56,157,83"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGFDMExec.html" title="Encapsulates the JSBSim simulation executive." alt="" coords="31,107,131,133"/>
+<area shape="rect" id="node6" title="STL class." alt="" coords="52,157,111,184"/>
+<area shape="rect" id="node7" href="$structJSBSim_1_1FGEngine_1_1Inputs.html" title=" " alt="" coords="331,252,394,279"/>
+<area shape="rect" id="node8" href="$classJSBSim_1_1FGColumnVector3.html" title="This class implements a 3 element column vector." alt="" coords="12,228,151,255"/>
+<area shape="rect" id="node9" title=" " alt="" coords="21,279,142,305"/>
+<area shape="rect" id="node10" title=" " alt="" coords="13,380,150,407"/>
+</map>

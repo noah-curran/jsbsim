@@ -1,0 +1,10 @@
+<map id="SetBetaDegIC" name="SetBetaDegIC">
+<area shape="rect" id="node1" title="Sets angle of sideslip initial condition in degrees." alt="" coords="5,177,117,203"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#a4e35ac529197f0bbcd476f52eae08a40" title="Sets the initial sideslip angle." alt="" coords="165,177,276,203"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGQuaternion.html#a15a2018bc1a5faa4c85a2e27a20fa5d8" title="Retrieves cosine of the given euler angle." alt="" coords="337,5,504,47"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGQuaternion.html#a047e6db657595b4371db02dc26ecf823" title="Retrieves the Euler angles." alt="" coords="337,71,504,112"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGQuaternion.html#a05a24cffb3dbe93f6dac60998eb3dbf9" title="Retrieves sine of the given euler angle." alt="" coords="337,136,504,177"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGQuaternion.html#ab0e5564df2ba8ac3f2db0a760e64c564" title="Backward transformation matrix." alt="" coords="337,201,504,243"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGColumnVector3.html#acc6f47d7e6daf06690b60f6df00c8264" title="Normalize." alt="" coords="324,267,517,308"/>
+<area shape="rect" id="node8" href="$classJSBSim_1_1FGMatrix33.html#a039718b92a595f3eafaafb2091cfa52a" title="Transposed matrix." alt="" coords="345,332,497,373"/>
+</map>

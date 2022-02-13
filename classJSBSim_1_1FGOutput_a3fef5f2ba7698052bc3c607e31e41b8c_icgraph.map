@@ -1,0 +1,4 @@
+<map id="SetRateHz" name="SetRateHz">
+<area shape="rect" id="node1" title="Modifies the output rate for all output instances." alt="" coords="216,13,307,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGFDMExec.html#a5f94656809f418f02625bcf4de3c5ec3" title="Sets the logging rate in Hz for all output objects (if any)." alt="" coords="5,5,168,47"/>
+</map>

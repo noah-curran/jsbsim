@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>FGPropagate &#8212; JSBSim 1.1.11 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FGPropertyManager" href="FGPropertyManager.html" />
+    <link rel="prev" title="FGMassBalance" href="FGMassBalance.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo_JSBSIM_globe.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="index.html">JSBSim</a></h1>
+
+
+
+<p class="blurb">An open source flight dynamics & control software library</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=JSBSim-Team&repo=jsbsim&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a class="badge" href="https://travis-ci.org/JSBSim-Team/jsbsim">
+    <img
+        alt="https://secure.travis-ci.org/JSBSim-Team/jsbsim.svg?branch=master"
+        src="https://secure.travis-ci.org/JSBSim-Team/jsbsim.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="FGAerodynamics.html">FGAerodynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAircraft.html">FGAircraft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAtmosphere.html">FGAtmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAuxiliary.html">FGAuxiliary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGEngine.html">FGEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGFDMExec.html">FGFDMExec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGGroundReactions.html">FGGroundReactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGJSBBase.html">FGJSBBase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGLGear.html">FGLGear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGMassBalance.html">FGMassBalance</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FGPropagate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropertyManager.html">FGPropertyManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropulsion.html">FGPropulsion</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="FGMassBalance.html" title="previous chapter">FGMassBalance</a></li>
+      <li>Next: <a href="FGPropertyManager.html" title="next chapter">FGPropertyManager</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="fgpropagate">
+<span id="id1"></span><h1>FGPropagate<a class="headerlink" href="#fgpropagate" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="jsbsim.FGPropagate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">jsbsim.</span></span><span class="sig-name descname"><span class="pre">FGPropagate</span></span><a class="headerlink" href="#jsbsim.FGPropagate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Models the EOM and integration/propagation of state.</p>
+<p>The Equations of Motion (EOM) for JSBSim are integrated to propagate the
+state of the vehicle given the forces and moments that act on it. The
+integration accounts for a rotating Earth.</p>
+<p>Integration of rotational and translation position and rate can be
+customized as needed or frozen by the selection of no integrator. The
+selection of which integrator to use is done through the setting of the
+associated property. There are four properties which can be set:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>simulation/integrator/rate/rotational
+simulation/integrator/rate/translational
+simulation/integrator/position/rotational
+simulation/integrator/position/translational
+</pre></div>
+</div>
+<p>Each of the integrators listed above can be set to one of the following
+values:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>0: No integrator (Freeze)
+1: Rectangular Euler
+2: Trapezoidal
+3: Adams Bashforth 2
+4: Adams Bashforth 3
+5: Adams Bashforth 4
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGPropagate.get_Tec2b">
+<span class="sig-name descname"><span class="pre">get_Tec2b</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGPropagate.get_Tec2b" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the ECEF-to-body transformation matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a reference to the ECEF-to-body transformation matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGPropagate.get_Tl2b">
+<span class="sig-name descname"><span class="pre">get_Tl2b</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGPropagate.get_Tl2b" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the local-to-body transformation matrix.</p>
+<p>The quaternion class, being the means by which the orientation of
+the vehicle is stored, manages the local-to-body transformation
+matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a reference to the local-to-body transformation matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGPropagate.get_uvw">
+<span class="sig-name descname"><span class="pre">get_uvw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGPropagate.get_uvw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a body frame velocity component.</p>
+<p>Retrieves a body frame velocity component. The velocity returned is
+extracted from the vUVW vector (an FGColumnVector). The vector for
+the velocity in Body frame is organized (Vx, Vy, Vz). The vector is
+1-based. In other words, GetUVW(1) returns Vx. Various convenience
+enumerators are defined in <a class="reference internal" href="FGJSBBase.html#fgjsbbase"><span class="std std-ref">FGJSBBase</span></a>. The relevant
+enumerators for the velocity returned by this call are, eX=1, eY=2,
+eZ=3. units ft/sec</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> – the index of the velocity component desired (1-based).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The body frame velocity component.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, The JSBSim team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/FGPropagate.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/JSBSim-Team/jsbsim" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

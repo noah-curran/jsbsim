@@ -1,0 +1,7 @@
+<map id="Load" name="Load">
+<area shape="rect" id="node1" title="Load the input directives and adds a new input instance to the Input Manager list." alt="" coords="471,71,524,98"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGFDMExec.html#ae3203eea8354c1b3caf53395a0a5f6a7" title="Loads an aircraft model." alt="" coords="238,5,401,47"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGScript.html#affd5971385d780aef57a6f7a9645f9f7" title="Loads a script to drive JSBSim (usually in standalone mode)." alt="" coords="216,71,423,98"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGInput.html#a8204557b6f2865b7e6e29b3a3a9d524d" title="Adds a new input instance to the Input Manager." alt="" coords="253,122,385,149"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGFDMExec.html#a3a5c816fd2db9ddca6c3f209f2b456d0" title="Load a script." alt="" coords="5,64,168,105"/>
+</map>

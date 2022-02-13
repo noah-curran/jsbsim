@@ -1,0 +1,7 @@
+<map id="SetAltitudeASLFtIC" name="SetAltitudeASLFtIC">
+<area shape="rect" id="node1" title="Sets the altitude above sea level initial condition in feet." alt="" coords="439,31,583,57"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#a777b283e5014563b30f96b47a9e6220a" title="Sets the initial geodetic latitude." alt="" coords="223,5,391,32"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGInitialCondition.html#ab6f6dae970e40878a34789be7dfcb9a7" title="Sets the initial latitude." alt="" coords="239,56,374,83"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGInitialCondition.html#aba2e10b224998e7ecd7edffdc6869c39" title="Sets the initial geodetic latitude." alt="" coords="5,5,175,32"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGInitialCondition.html#ad1f01b8c9218fce2c418d2a60593a99c" title="Sets the initial latitude." alt="" coords="23,56,157,83"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Load" name="Load">
+<area shape="rect" id="node1" title="Init the input directives from an XML file (implement the FGModel interface)." alt="" coords="517,78,571,105"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInputSocket.html#a0b8d108c40ce8b06c3c849824ab18397" title="Init the input directives from an XML file." alt="" coords="299,24,469,65"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGInput.html#a0b8d108c40ce8b06c3c849824ab18397" title="Load the input directives and adds a new input instance to the Input Manager list." alt="" coords="301,107,467,134"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGUDPInputSocket.html#a0b8d108c40ce8b06c3c849824ab18397" title="Reads the property names from an XML file." alt="" coords="29,5,227,47"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGFDMExec.html#ae3203eea8354c1b3caf53395a0a5f6a7" title="Loads an aircraft model." alt="" coords="47,71,209,112"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGScript.html#affd5971385d780aef57a6f7a9645f9f7" title="Loads a script to drive JSBSim (usually in standalone mode)." alt="" coords="25,137,231,163"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGInput.html#a8204557b6f2865b7e6e29b3a3a9d524d" title="Adds a new input instance to the Input Manager." alt="" coords="5,187,251,214"/>
+</map>

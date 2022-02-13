@@ -1,0 +1,4 @@
+<map id="GetFlightPathAngleRadIC" name="GetFlightPathAngleRadIC">
+<area shape="rect" id="node1" title="Gets the initial flight path angle." alt="" coords="240,5,425,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#a237bd5d8f969aaea688b3b55576e7769" title="Gets the initial flight path angle." alt="" coords="5,5,192,32"/>
+</map>

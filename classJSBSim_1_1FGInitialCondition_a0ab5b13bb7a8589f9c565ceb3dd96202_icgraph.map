@@ -1,0 +1,4 @@
+<map id="SetPsiRadIC" name="SetPsiRadIC">
+<area shape="rect" id="node1" title="Sets the initial heading angle." alt="" coords="155,5,255,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#aa7cac15ce4c6ca22c645fe0012bd0797" title="Sets the heading angle initial condition in degrees." alt="" coords="5,5,107,32"/>
+</map>

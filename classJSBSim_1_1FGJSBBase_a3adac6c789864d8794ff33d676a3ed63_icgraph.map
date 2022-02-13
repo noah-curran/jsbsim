@@ -1,0 +1,4 @@
+<map id="PitotTotalPressure" name="PitotTotalPressure">
+<area shape="rect" id="node1" title="Compute the total pressure in front of the Pitot tube." alt="" coords="237,5,376,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGAuxiliary.html#a764e8c6d39b827d2ad03f570a2fc37e6" title="Runs the Auxiliary routines; called by the Executive Can pass in a value indicating if the executive ..." alt="" coords="5,5,189,32"/>
+</map>

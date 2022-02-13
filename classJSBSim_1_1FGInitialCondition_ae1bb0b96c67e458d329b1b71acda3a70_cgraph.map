@@ -1,0 +1,4 @@
+<map id="GetPsiDegIC" name="GetPsiDegIC">
+<area shape="rect" id="node1" title="Gets the initial heading angle." alt="" coords="5,13,108,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGQuaternion.html#a4e2c0402339df421f1e6f9b3ac8c8712" title="Retrieves the Euler angles." alt="" coords="156,5,323,47"/>
+</map>

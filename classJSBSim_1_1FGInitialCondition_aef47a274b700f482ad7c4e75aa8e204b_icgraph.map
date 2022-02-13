@@ -1,0 +1,4 @@
+<map id="SetVgroundFpsIC" name="SetVgroundFpsIC">
+<area shape="rect" id="node1" title="Sets the initial ground speed." alt="" coords="184,5,317,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#a6f3cf9777dfc1bbd1bf43925c8e617d7" title="Set ground speed initial condition in knots." alt="" coords="5,5,136,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="GetDeCmd" name="GetDeCmd">
+<area shape="rect" id="node1" title="Gets the elevator command." alt="" coords="235,35,328,61"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGTrim.html#a6a5e26b6c78ad99b63d075c6acc70679" title="Execute the trim." alt="" coords="8,5,184,32"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGOutputSocket.html#a0d7143a7146c3401f1c71e68d68097d6" title="Generates the output." alt="" coords="5,57,187,98"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="GetDistanceTo" name="GetDistanceTo">
+<area shape="rect" id="node1" title="Get the geodetic distance between the current location and a given location." alt="" coords="5,5,121,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGLocation.html#aa71688869eede539bff376f43a78ea14" title="Get the distance from the center of the earth in feet." alt="" coords="169,5,259,32"/>
+</map>

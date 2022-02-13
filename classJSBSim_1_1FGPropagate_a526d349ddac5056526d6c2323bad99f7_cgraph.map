@@ -1,0 +1,4 @@
+<map id="GetSinEuler" name="GetSinEuler">
+<area shape="rect" id="node1" title="Retrieves the sine of a vehicle Euler angle component." alt="" coords="5,13,104,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGQuaternion.html#a05a24cffb3dbe93f6dac60998eb3dbf9" title="Retrieves sine of the given euler angle." alt="" coords="152,5,319,47"/>
+</map>

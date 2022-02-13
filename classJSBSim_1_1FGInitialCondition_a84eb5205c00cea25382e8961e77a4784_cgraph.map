@@ -1,0 +1,5 @@
+<map id="GetAltitudeAGLFtIC" name="GetAltitudeAGLFtIC">
+<area shape="rect" id="node1" title="Gets the initial altitude above ground level." alt="" coords="5,46,153,73"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInertial.html#a73c8611f4ce740c255fe6ccc2d7891c9" title="Get the altitude above ground level." alt="" coords="213,5,353,47"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGFDMExec.html#a93876fb8e8a2302e3880f9ebfb3ce6d5" title="Returns the FGInertial pointer." alt="" coords="201,71,364,112"/>
+</map>

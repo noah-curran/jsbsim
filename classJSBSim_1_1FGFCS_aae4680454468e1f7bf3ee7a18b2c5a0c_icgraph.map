@@ -1,0 +1,4 @@
+<map id="GetComponentValues" name="GetComponentValues">
+<area shape="rect" id="node1" title="Retrieves all component outputs for inclusion in output stream." alt="" coords="235,13,397,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGOutputSocket.html#a0d7143a7146c3401f1c71e68d68097d6" title="Generates the output." alt="" coords="5,5,187,47"/>
+</map>

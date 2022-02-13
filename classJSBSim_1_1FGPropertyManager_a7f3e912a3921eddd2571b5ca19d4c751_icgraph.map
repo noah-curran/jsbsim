@@ -1,0 +1,11 @@
+<map id="Tie" name="Tie">
+<area shape="rect" id="node1" title="Tie a property to an external variable." alt="" coords="479,202,521,229"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGElectric.html#ad4e4a9b09b1ce922ec56141027403230" title="Constructor." alt="" coords="259,5,402,47"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGFDMExec.html#af3ced4128ce6d9badd7b8a13865c2ad9" title="Default constructor." alt="" coords="249,71,412,112"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGGasCell.html#a1cf9a5c35024d2b623634085b0f380fc" title="Constructor." alt="" coords="255,136,407,177"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGPiston.html#a7db5fe477b255ce4ce71fe89817d98ef" title="Constructor." alt="" coords="231,202,431,229"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGPropeller.html#af055485a3f74654dae147e839447e9ad" title="Constructor for FGPropeller." alt="" coords="255,253,407,295"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGThruster.html#a18899cd20a4e7ceec9427ea4b4bdff4a" title="Constructor." alt="" coords="257,319,405,360"/>
+<area shape="rect" id="node8" href="$classJSBSim_1_1FGOutputType.html#a6f1370cfe2ed983e54af0720b6c0b3d5" title="Set the idx for this output instance." alt="" coords="247,384,415,425"/>
+<area shape="rect" id="node9" href="$classJSBSim_1_1FGOutput.html#a73535c48fc7e09497439e8fb05bea07f" title="Load the output directives and adds a new output instance to the Output Manager list." alt="" coords="5,391,183,418"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="GetUVWFpsIC" name="GetUVWFpsIC">
+<area shape="rect" id="node1" title="Gets the initial body velocity." alt="" coords="5,13,119,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGQuaternion.html#a4c650fa69b797cb5d122b7b19c70d380" title="Transformation matrix." alt="" coords="167,5,333,47"/>
+</map>

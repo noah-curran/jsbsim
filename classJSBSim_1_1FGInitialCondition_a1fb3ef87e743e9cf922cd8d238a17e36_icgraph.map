@@ -1,0 +1,4 @@
+<map id="GetVgroundFpsIC" name="GetVgroundFpsIC">
+<area shape="rect" id="node1" title="Gets the initial ground velocity." alt="" coords="187,5,321,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#a28f835831573bbf38a9980656513a0bf" title="Gets the initial ground speed." alt="" coords="5,5,139,32"/>
+</map>

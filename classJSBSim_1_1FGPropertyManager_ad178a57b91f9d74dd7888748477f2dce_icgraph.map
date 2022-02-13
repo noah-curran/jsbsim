@@ -1,0 +1,6 @@
+<map id="Unbind" name="Unbind">
+<area shape="rect" id="node1" title="Unbind all properties bound by this manager to an external data source." alt="" coords="427,42,495,69"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGFDMExec.html#ad178a57b91f9d74dd7888748477f2dce" title="Unbind all tied JSBSim properties." alt="" coords="216,5,379,47"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGPropertyManager.html#a16aaabdb1a74c96eae684039534f0c5a" title="Destructor." alt="" coords="216,71,379,98"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGFDMExec.html#ac78c9cf5f4f058097637956a9a0d5d4f" title="Default destructor." alt="" coords="5,5,168,47"/>
+</map>

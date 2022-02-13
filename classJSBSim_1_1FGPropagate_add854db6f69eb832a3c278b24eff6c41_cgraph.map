@@ -1,0 +1,4 @@
+<map id="GetCosEuler" name="GetCosEuler">
+<area shape="rect" id="node1" title="Retrieves the cosine of a vehicle Euler angle component." alt="" coords="5,13,108,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGQuaternion.html#a15a2018bc1a5faa4c85a2e27a20fa5d8" title="Retrieves cosine of the given euler angle." alt="" coords="156,5,323,47"/>
+</map>

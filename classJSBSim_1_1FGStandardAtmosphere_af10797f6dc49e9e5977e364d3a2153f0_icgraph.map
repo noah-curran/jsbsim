@@ -1,0 +1,7 @@
+<map id="CalculatePressureAltitude" name="CalculatePressureAltitude">
+<area shape="rect" id="node1" title="Calculates the pressure altitude given any temperature or pressure bias." alt="" coords="248,81,439,108"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGStandardAtmosphere.html#ae383eeb62b1743fbe4f24cd0af2c397f" title="Sets the dew point." alt="" coords="50,5,155,32"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGStandardAtmosphere.html#a503451f97e330a8e00f7516933ccdcb5" title="Sets the relative humidity." alt="" coords="24,56,181,83"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGStandardAtmosphere.html#ae2ea4c880e365482c78e2b0579fd2922" title="Sets the vapor mass per million of dry air mass units." alt="" coords="5,107,200,133"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGStandardAtmosphere.html#a0a96927230c095f8684eb0b6cb9de493" title="Sets the partial pressure of water vapor." alt="" coords="35,157,171,184"/>
+</map>

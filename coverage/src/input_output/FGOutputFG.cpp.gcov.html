@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - JSBSim unit tests - src/input_output/FGOutputFG.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/input_output</a> - FGOutputFG.cpp<span style="font-size: 80%;"> (source / <a href="FGOutputFG.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">JSBSim unit tests</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">196</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-02-13 13:08:09</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="2"><span class="lineNum">       2 </span>            : </a>
+<a name="3"><span class="lineNum">       3 </span>            :  Module:       FGOutputFG.cpp</a>
+<a name="4"><span class="lineNum">       4 </span>            :  Author:       Bertrand Coconnier</a>
+<a name="5"><span class="lineNum">       5 </span>            :  Date started: 09/10/11</a>
+<a name="6"><span class="lineNum">       6 </span>            :  Purpose:      Manage output of sim parameters to FlightGear</a>
+<a name="7"><span class="lineNum">       7 </span>            :  Called by:    FGOutput</a>
+<a name="8"><span class="lineNum">       8 </span>            : </a>
+<a name="9"><span class="lineNum">       9 </span>            :  ------------- Copyright (C) 2011 Bertrand Coconnier -------------</a>
+<a name="10"><span class="lineNum">      10 </span>            : </a>
+<a name="11"><span class="lineNum">      11 </span>            :  This program is free software; you can redistribute it and/or modify it under</a>
+<a name="12"><span class="lineNum">      12 </span>            :  the terms of the GNU Lesser General Public License as published by the Free</a>
+<a name="13"><span class="lineNum">      13 </span>            :  Software Foundation; either version 2 of the License, or (at your option) any</a>
+<a name="14"><span class="lineNum">      14 </span>            :  later version.</a>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span>            :  This program is distributed in the hope that it will be useful, but WITHOUT</a>
+<a name="17"><span class="lineNum">      17 </span>            :  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS</a>
+<a name="18"><span class="lineNum">      18 </span>            :  FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more</a>
+<a name="19"><span class="lineNum">      19 </span>            :  details.</a>
+<a name="20"><span class="lineNum">      20 </span>            : </a>
+<a name="21"><span class="lineNum">      21 </span>            :  You should have received a copy of the GNU Lesser General Public License along</a>
+<a name="22"><span class="lineNum">      22 </span>            :  with this program; if not, write to the Free Software Foundation, Inc., 59</a>
+<a name="23"><span class="lineNum">      23 </span>            :  Temple Place - Suite 330, Boston, MA 02111-1307, USA.</a>
+<a name="24"><span class="lineNum">      24 </span>            : </a>
+<a name="25"><span class="lineNum">      25 </span>            :  Further information about the GNU Lesser General Public License can also be</a>
+<a name="26"><span class="lineNum">      26 </span>            :  found on the world wide web at http://www.gnu.org.</a>
+<a name="27"><span class="lineNum">      27 </span>            : </a>
+<a name="28"><span class="lineNum">      28 </span>            : FUNCTIONAL DESCRIPTION</a>
+<a name="29"><span class="lineNum">      29 </span>            : --------------------------------------------------------------------------------</a>
+<a name="30"><span class="lineNum">      30 </span>            : This is the place where you create output routines to dump data for perusal</a>
+<a name="31"><span class="lineNum">      31 </span>            : later.</a>
+<a name="32"><span class="lineNum">      32 </span>            : </a>
+<a name="33"><span class="lineNum">      33 </span>            : HISTORY</a>
+<a name="34"><span class="lineNum">      34 </span>            : --------------------------------------------------------------------------------</a>
+<a name="35"><span class="lineNum">      35 </span>            : 11/09/07   HDW   Added FlightGear Socket Interface</a>
+<a name="36"><span class="lineNum">      36 </span>            : 09/10/11   BC    Moved the FlightGear socket in a separate class</a>
+<a name="37"><span class="lineNum">      37 </span>            : </a>
+<a name="38"><span class="lineNum">      38 </span>            : %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="39"><span class="lineNum">      39 </span>            : INCLUDES</a>
+<a name="40"><span class="lineNum">      40 </span>            : %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/</a>
+<a name="41"><span class="lineNum">      41 </span>            : </a>
+<a name="42"><span class="lineNum">      42 </span>            : #include &lt;cstring&gt;</a>
+<a name="43"><span class="lineNum">      43 </span>            : </a>
+<a name="44"><span class="lineNum">      44 </span>            : #include &quot;FGOutputFG.h&quot;</a>
+<a name="45"><span class="lineNum">      45 </span>            : #include &quot;FGXMLElement.h&quot;</a>
+<a name="46"><span class="lineNum">      46 </span>            : #include &quot;models/FGAuxiliary.h&quot;</a>
+<a name="47"><span class="lineNum">      47 </span>            : #include &quot;models/FGPropulsion.h&quot;</a>
+<a name="48"><span class="lineNum">      48 </span>            : #include &quot;models/FGFCS.h&quot;</a>
+<a name="49"><span class="lineNum">      49 </span>            : #include &quot;models/propulsion/FGPiston.h&quot;</a>
+<a name="50"><span class="lineNum">      50 </span>            : #include &quot;models/propulsion/FGElectric.h&quot;</a>
+<a name="51"><span class="lineNum">      51 </span>            : #include &quot;models/propulsion/FGTank.h&quot;</a>
+<a name="52"><span class="lineNum">      52 </span>            : </a>
+<a name="53"><span class="lineNum">      53 </span>            : #if defined(WIN32) &amp;&amp; !defined(__CYGWIN__)</a>
+<a name="54"><span class="lineNum">      54 </span>            : #  include &lt;windows.h&gt;</a>
+<a name="55"><span class="lineNum">      55 </span>            : #else</a>
+<a name="56"><span class="lineNum">      56 </span>            : #  include &lt;netinet/in.h&gt;       // htonl() ntohl()</a>
+<a name="57"><span class="lineNum">      57 </span>            : #endif</a>
+<a name="58"><span class="lineNum">      58 </span>            : </a>
+<a name="59"><span class="lineNum">      59 </span>            : #if !defined (min)</a>
+<a name="60"><span class="lineNum">      60 </span>            : #  define min(X,Y) X&lt;Y?X:Y</a>
+<a name="61"><span class="lineNum">      61 </span>            : #endif</a>
+<a name="62"><span class="lineNum">      62 </span>            : </a>
+<a name="63"><span class="lineNum">      63 </span>            : static const int endianTest = 1;</a>
+<a name="64"><span class="lineNum">      64 </span>            : #define isLittleEndian (*((char *) &amp;endianTest ) != 0)</a>
+<a name="65"><span class="lineNum">      65 </span>            : </a>
+<a name="66"><span class="lineNum">      66 </span>            : using namespace std;</a>
+<a name="67"><span class="lineNum">      67 </span>            : </a>
+<a name="68"><span class="lineNum">      68 </span>            : namespace JSBSim {</a>
+<a name="69"><span class="lineNum">      69 </span>            : </a>
+<a name="70"><span class="lineNum">      70 </span>            : // (stolen from FGFS native_fdm.cxx)</a>
+<a name="71"><span class="lineNum">      71 </span>            : // The function htond is defined this way due to the way some</a>
+<a name="72"><span class="lineNum">      72 </span>            : // processors and OSes treat floating point values.  Some will raise</a>
+<a name="73"><span class="lineNum">      73 </span>            : // an exception whenever a &quot;bad&quot; floating point value is loaded into a</a>
+<a name="74"><span class="lineNum">      74 </span>            : // floating point register.  Solaris is notorious for this, but then</a>
+<a name="75"><span class="lineNum">      75 </span>            : // so is LynxOS on the PowerPC.  By translating the data in place,</a>
+<a name="76"><span class="lineNum">      76 </span>            : // there is no need to load a FP register with the &quot;corruped&quot; floating</a>
+<a name="77"><span class="lineNum">      77 </span>            : // point value.  By doing the BIG_ENDIAN test, I can optimize the</a>
+<a name="78"><span class="lineNum">      78 </span>            : // routine for big-endian processors so it can be as efficient as</a>
+<a name="79"><span class="lineNum">      79 </span>            : // possible</a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 : static void htond (double &amp;x)</span></a>
+<a name="81"><span class="lineNum">      81 </span>            : {</a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 :     if ( isLittleEndian ) {</span></a>
+<a name="83"><span class="lineNum">      83 </span>            :         int    *Double_Overlay;</a>
+<a name="84"><span class="lineNum">      84 </span>            :         int     Holding_Buffer;</a>
+<a name="85"><span class="lineNum">      85 </span>            : </a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 :         Double_Overlay = (int *) &amp;x;</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineNoCov">          0 :         Holding_Buffer = Double_Overlay [0];</span></a>
+<a name="88"><span class="lineNum">      88 </span>            : </a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 :         Double_Overlay [0] = htonl (Double_Overlay [1]);</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineNoCov">          0 :         Double_Overlay [1] = htonl (Holding_Buffer);</span></a>
+<a name="91"><span class="lineNum">      91 </span>            :     } else {</a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="93"><span class="lineNum">      93 </span>            :     }</a>
+<a name="94"><span class="lineNum">      94 </span>            : }</a>
+<a name="95"><span class="lineNum">      95 </span>            : </a>
+<a name="96"><span class="lineNum">      96 </span>            : // Float version</a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 : static void htonf (float &amp;x)</span></a>
+<a name="98"><span class="lineNum">      98 </span>            : {</a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 :     if ( isLittleEndian ) {</span></a>
+<a name="100"><span class="lineNum">     100 </span>            :         int    *Float_Overlay;</a>
+<a name="101"><span class="lineNum">     101 </span>            :         int     Holding_Buffer;</a>
+<a name="102"><span class="lineNum">     102 </span>            : </a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 :         Float_Overlay = (int *) &amp;x;</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 :         Holding_Buffer = Float_Overlay [0];</span></a>
+<a name="105"><span class="lineNum">     105 </span>            : </a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :         Float_Overlay [0] = htonl (Holding_Buffer);</span></a>
+<a name="107"><span class="lineNum">     107 </span>            :     } else {</a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="109"><span class="lineNum">     109 </span>            :     }</a>
+<a name="110"><span class="lineNum">     110 </span>            : }</a>
+<a name="111"><span class="lineNum">     111 </span>            : </a>
+<a name="112"><span class="lineNum">     112 </span>            : </a>
+<a name="113"><span class="lineNum">     113 </span>            : /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="114"><span class="lineNum">     114 </span>            : CLASS IMPLEMENTATION</a>
+<a name="115"><span class="lineNum">     115 </span>            : %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/</a>
+<a name="116"><span class="lineNum">     116 </span>            : </a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 : FGOutputFG::FGOutputFG(FGFDMExec* fdmex) :</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :   FGOutputSocket(fdmex), outputOptions{false, 1e6}</span></a>
+<a name="119"><span class="lineNum">     119 </span>            : {</a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :   memset(&amp;fgSockBuf, 0x0, sizeof(fgSockBuf));</span></a>
+<a name="121"><span class="lineNum">     121 </span>            : </a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :   if (fdmex-&gt;GetDebugLevel() &gt; 0) {</span></a>
+<a name="123"><span class="lineNum">     123 </span>            :     // Engine status</a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :     if (Propulsion-&gt;GetNumEngines() &gt; FGNetFDM::FG_MAX_ENGINES)</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :       cerr &lt;&lt; &quot;This vehicle has &quot; &lt;&lt; Propulsion-&gt;GetNumEngines() &lt;&lt; &quot; engines, but the current &quot; &lt;&lt; endl</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :            &lt;&lt; &quot;version of FlightGear's FGNetFDM only supports &quot; &lt;&lt; FGNetFDM::FG_MAX_ENGINES &lt;&lt; &quot; engines.&quot; &lt;&lt; endl</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :            &lt;&lt; &quot;Only the first &quot; &lt;&lt; FGNetFDM::FG_MAX_ENGINES &lt;&lt; &quot; engines will be used.&quot; &lt;&lt; endl;</span></a>
+<a name="128"><span class="lineNum">     128 </span>            : </a>
+<a name="129"><span class="lineNum">     129 </span>            :     // Consumables</a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :     if (Propulsion-&gt;GetNumTanks() &gt; FGNetFDM::FG_MAX_TANKS)</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 :       cerr &lt;&lt; &quot;This vehicle has &quot; &lt;&lt; Propulsion-&gt;GetNumTanks() &lt;&lt; &quot; tanks, but the current &quot; &lt;&lt; endl</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 :            &lt;&lt; &quot;version of FlightGear's FGNetFDM only supports &quot; &lt;&lt; FGNetFDM::FG_MAX_TANKS &lt;&lt; &quot; tanks.&quot; &lt;&lt; endl</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :            &lt;&lt; &quot;Only the first &quot; &lt;&lt; FGNetFDM::FG_MAX_TANKS &lt;&lt; &quot; tanks will be used.&quot; &lt;&lt; endl;</span></a>
+<a name="134"><span class="lineNum">     134 </span>            : </a>
+<a name="135"><span class="lineNum">     135 </span>            :     // Gear status</a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :     if (GroundReactions-&gt;GetNumGearUnits() &gt; FGNetFDM::FG_MAX_WHEELS)</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :       cerr &lt;&lt; &quot;This vehicle has &quot; &lt;&lt; GroundReactions-&gt;GetNumGearUnits() &lt;&lt; &quot; bogeys, but the current &quot; &lt;&lt; endl</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :            &lt;&lt; &quot;version of FlightGear's FGNetFDM only supports &quot; &lt;&lt; FGNetFDM::FG_MAX_WHEELS &lt;&lt; &quot; bogeys.&quot; &lt;&lt; endl</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :            &lt;&lt; &quot;Only the first &quot; &lt;&lt; FGNetFDM::FG_MAX_WHEELS &lt;&lt; &quot; bogeys will be used.&quot; &lt;&lt; endl;</span></a>
+<a name="140"><span class="lineNum">     140 </span>            :   }</a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="142"><span class="lineNum">     142 </span>            : </a>
+<a name="143"><span class="lineNum">     143 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="144"><span class="lineNum">     144 </span>            : </a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 : bool FGOutputFG::Load(Element* el)</span></a>
+<a name="146"><span class="lineNum">     146 </span>            : {</a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :   if (!FGOutputSocket::Load(el)) {</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :     return false;</span></a>
+<a name="149"><span class="lineNum">     149 </span>            :   }</a>
+<a name="150"><span class="lineNum">     150 </span>            : </a>
+<a name="151"><span class="lineNum">     151 </span>            :   // Check if there is a &lt;time&gt; element</a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :   Element* time_el = el-&gt;FindElement(&quot;time&quot;);</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :   if (time_el) {</span></a>
+<a name="154"><span class="lineNum">     154 </span>            :     // Check if the attribute &quot;type&quot; is specified and is set to &quot;simulation&quot;</a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :     if (time_el-&gt;HasAttribute(&quot;type&quot;) &amp;&amp; time_el-&gt;GetAttributeValue(&quot;type&quot;) == &quot;simulation&quot;) {</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :       outputOptions.useSimTime = true;</span></a>
+<a name="157"><span class="lineNum">     157 </span>            :     }</a>
+<a name="158"><span class="lineNum">     158 </span>            : </a>
+<a name="159"><span class="lineNum">     159 </span>            :     // Check if the attribute &quot;resolution&quot; is specified and set to a valid value</a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :     if (time_el-&gt;HasAttribute(&quot;resolution&quot;)) {</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :       if (time_el-&gt;GetAttributeValueAsNumber(&quot;resolution&quot;) &lt;= 1 &amp;&amp;</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :           time_el-&gt;GetAttributeValueAsNumber(&quot;resolution&quot;) &gt;= 1e-9) {</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :         outputOptions.timeFactor = 1./time_el-&gt;GetAttributeValueAsNumber(&quot;resolution&quot;);</span></a>
+<a name="164"><span class="lineNum">     164 </span>            :       } else {</a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :         return false;</span></a>
+<a name="166"><span class="lineNum">     166 </span>            :       }</a>
+<a name="167"><span class="lineNum">     167 </span>            :     }</a>
+<a name="168"><span class="lineNum">     168 </span>            :   }</a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :   return true;</span></a>
+<a name="170"><span class="lineNum">     170 </span>            : }</a>
+<a name="171"><span class="lineNum">     171 </span>            : </a>
+<a name="172"><span class="lineNum">     172 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="173"><span class="lineNum">     173 </span>            : </a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineNoCov">          0 : void FGOutputFG::SocketDataFill(FGNetFDM* net)</span></a>
+<a name="175"><span class="lineNum">     175 </span>            : {</a>
+<a name="176"><span class="lineNum">     176 </span>            :   unsigned int i;</a>
+<a name="177"><span class="lineNum">     177 </span>            : </a>
+<a name="178"><span class="lineNum">     178 </span>            :   // Version</a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :   net-&gt;version = FG_NET_FDM_VERSION;</span></a>
+<a name="180"><span class="lineNum">     180 </span>            : </a>
+<a name="181"><span class="lineNum">     181 </span>            :   // Positions</a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :   net-&gt;longitude = Propagate-&gt;GetLongitude(); // longitude (radians)</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :   net-&gt;latitude  = Propagate-&gt;GetGeodLatitudeRad(); // geodetic (radians)</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineNoCov">          0 :   net-&gt;altitude  = Propagate-&gt;GetAltitudeASL()*0.3048; // altitude, above sea level (meters)</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineNoCov">          0 :   net-&gt;agl       = (float)(Propagate-&gt;GetDistanceAGL()*0.3048); // altitude, above ground level (meters)</span></a>
+<a name="186"><span class="lineNum">     186 </span>            : </a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineNoCov">          0 :   net-&gt;phi       = (float)(Propagate-&gt;GetEuler(ePhi)); // roll (radians)</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :   net-&gt;theta     = (float)(Propagate-&gt;GetEuler(eTht)); // pitch (radians)</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :   net-&gt;psi       = (float)(Propagate-&gt;GetEuler(ePsi)); // yaw or true heading (radians)</span></a>
+<a name="190"><span class="lineNum">     190 </span>            : </a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :   net-&gt;alpha     = (float)(Auxiliary-&gt;Getalpha()); // angle of attack (radians)</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :   net-&gt;beta      = (float)(Auxiliary-&gt;Getbeta()); // side slip angle (radians)</span></a>
+<a name="193"><span class="lineNum">     193 </span>            : </a>
+<a name="194"><span class="lineNum">     194 </span>            :   // Velocities</a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :   net-&gt;phidot     = (float)(Auxiliary-&gt;GetEulerRates(ePhi)); // roll rate (radians/sec)</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :   net-&gt;thetadot   = (float)(Auxiliary-&gt;GetEulerRates(eTht)); // pitch rate (radians/sec)</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 :   net-&gt;psidot     = (float)(Auxiliary-&gt;GetEulerRates(ePsi)); // yaw rate (radians/sec)</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :   net-&gt;vcas       = (float)(Auxiliary-&gt;GetVcalibratedKTS()); // VCAS, knots</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :   net-&gt;climb_rate = (float)(Propagate-&gt;Gethdot());           // altitude rate, ft/sec</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :   net-&gt;v_north    = (float)(Propagate-&gt;GetVel(eNorth));      // north vel in NED frame, fps</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :   net-&gt;v_east     = (float)(Propagate-&gt;GetVel(eEast));       // east vel in NED frame, fps</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :   net-&gt;v_down     = (float)(Propagate-&gt;GetVel(eDown));       // down vel in NED frame, fps</span></a>
+<a name="203"><span class="lineNum">     203 </span>            : //---ADD METHOD TO CALCULATE THESE TERMS---</a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :   net-&gt;v_body_u = (float)(Propagate-&gt;GetUVW(1)); // ECEF speed in body axis</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :   net-&gt;v_body_v = (float)(Propagate-&gt;GetUVW(2)); // ECEF speed in body axis</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :   net-&gt;v_body_w = (float)(Propagate-&gt;GetUVW(3)); // ECEF speed in body axis</span></a>
+<a name="207"><span class="lineNum">     207 </span>            : </a>
+<a name="208"><span class="lineNum">     208 </span>            :   // Accelerations</a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :   net-&gt;A_X_pilot   = (float)(Auxiliary-&gt;GetPilotAccel(1));    // X body accel, ft/s/s</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 :   net-&gt;A_Y_pilot   = (float)(Auxiliary-&gt;GetPilotAccel(2));    // Y body accel, ft/s/s</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :   net-&gt;A_Z_pilot   = (float)(Auxiliary-&gt;GetPilotAccel(3));    // Z body accel, ft/s/s</span></a>
+<a name="212"><span class="lineNum">     212 </span>            : </a>
+<a name="213"><span class="lineNum">     213 </span>            :   // Stall</a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :   net-&gt;stall_warning = 0.0;  // 0.0 - 1.0 indicating the amount of stall</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :   net-&gt;slip_deg    = (float)(Auxiliary-&gt;Getbeta(inDegrees));  // slip ball deflection, deg</span></a>
+<a name="216"><span class="lineNum">     216 </span>            : </a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :   net-&gt;num_engines = min(FGNetFDM::FG_MAX_ENGINES,Propulsion-&gt;GetNumEngines()); // Number of valid engines</span></a>
+<a name="218"><span class="lineNum">     218 </span>            : </a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :   for (i=0; i&lt;net-&gt;num_engines; i++) {</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :     FGEngine* engine = Propulsion-&gt;GetEngine(i);</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :     if (engine-&gt;GetRunning())</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineNoCov">          0 :       net-&gt;eng_state[i] = 2;       // Engine state running</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :     else if (engine-&gt;GetCranking())</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :       net-&gt;eng_state[i] = 1;       // Engine state cranking</span></a>
+<a name="225"><span class="lineNum">     225 </span>            :     else</a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :       net-&gt;eng_state[i] = 0;       // Engine state off</span></a>
+<a name="227"><span class="lineNum">     227 </span>            : </a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :     switch (engine-&gt;GetType()) {</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :     case (FGEngine::etRocket):</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :       break;</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :     case (FGEngine::etPiston):</span></a>
+<a name="232"><span class="lineNum">     232 </span>            :       {</a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 :         FGPiston* piston_engine = static_cast&lt;FGPiston*&gt;(engine);</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :         net-&gt;rpm[i]       = (float)(piston_engine-&gt;getRPM());</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 :         net-&gt;fuel_flow[i] = (float)(piston_engine-&gt;getFuelFlow_gph());</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :         net-&gt;fuel_px[i]   = 0; // Fuel pressure, psi  (N/A in current model)</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :         net-&gt;egt[i]       = (float)(piston_engine-&gt;GetEGT());</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :         net-&gt;cht[i]       = (float)(piston_engine-&gt;getCylinderHeadTemp_degF());</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :         net-&gt;mp_osi[i]    = (float)(piston_engine-&gt;getManifoldPressure_inHg());</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :         net-&gt;oil_temp[i]  = (float)(piston_engine-&gt;getOilTemp_degF());</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :         net-&gt;oil_px[i]    = (float)(piston_engine-&gt;getOilPressure_psi());</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 :         net-&gt;tit[i]       = 0; // Turbine Inlet Temperature  (N/A for piston)</span></a>
+<a name="243"><span class="lineNum">     243 </span>            :       }</a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 :       break;</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :     case (FGEngine::etTurbine):</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :       break;</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :     case (FGEngine::etTurboprop):</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 :       break;</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 :     case (FGEngine::etElectric):</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :       net-&gt;rpm[i] = static_cast&lt;float&gt;(static_cast&lt;FGElectric*&gt;(engine)-&gt;getRPM());</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :       break;</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :     case (FGEngine::etUnknown):</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :       break;</span></a>
+<a name="254"><span class="lineNum">     254 </span>            :     }</a>
+<a name="255"><span class="lineNum">     255 </span>            :   }</a>
+<a name="256"><span class="lineNum">     256 </span>            : </a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :   net-&gt;num_tanks = min(FGNetFDM::FG_MAX_TANKS, Propulsion-&gt;GetNumTanks());   // Max number of fuel tanks</span></a>
+<a name="258"><span class="lineNum">     258 </span>            : </a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 :   for (i=0; i&lt;net-&gt;num_tanks; i++) {</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :     net-&gt;fuel_quantity[i] = (float)(((FGTank *)Propulsion-&gt;GetTank(i))-&gt;GetContents());</span></a>
+<a name="261"><span class="lineNum">     261 </span>            :   }</a>
+<a name="262"><span class="lineNum">     262 </span>            : </a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :   net-&gt;num_wheels  = min(FGNetFDM::FG_MAX_WHEELS, GroundReactions-&gt;GetNumGearUnits());</span></a>
+<a name="264"><span class="lineNum">     264 </span>            : </a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :   for (i=0; i&lt;net-&gt;num_wheels; i++) {</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :     net-&gt;wow[i]              = GroundReactions-&gt;GetGearUnit(i)-&gt;GetWOW();</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :     if (GroundReactions-&gt;GetGearUnit(i)-&gt;GetGearUnitDown())</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineNoCov">          0 :       net-&gt;gear_pos[i]      = 1;  //gear down, using FCS convention</span></a>
+<a name="269"><span class="lineNum">     269 </span>            :     else</a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :       net-&gt;gear_pos[i]      = 0;  //gear up, using FCS convention</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :     net-&gt;gear_steer[i]       = (float)(GroundReactions-&gt;GetGearUnit(i)-&gt;GetSteerNorm());</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :     net-&gt;gear_compression[i] = (float)(GroundReactions-&gt;GetGearUnit(i)-&gt;GetCompLen());</span></a>
+<a name="273"><span class="lineNum">     273 </span>            :   }</a>
+<a name="274"><span class="lineNum">     274 </span>            : </a>
+<a name="275"><span class="lineNum">     275 </span>            :   // Environment</a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :   if (outputOptions.useSimTime) {</span></a>
+<a name="277"><span class="lineNum">     277 </span>            :     // Send simulation time with specified resolution</a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :     net-&gt;cur_time    = static_cast&lt;uint32_t&gt;(FDMExec-&gt;GetSimTime()*outputOptions.timeFactor);</span></a>
+<a name="279"><span class="lineNum">     279 </span>            :   } else {</a>
+<a name="280"><span class="lineNum">     280 </span>            :     // Default to sending constant dummy value to ensure backwards-compatibility</a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 :     net-&gt;cur_time = 1234567890u;</span></a>
+<a name="282"><span class="lineNum">     282 </span>            :   }</a>
+<a name="283"><span class="lineNum">     283 </span>            :   </a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 :   net-&gt;warp        = 0;                       // offset in seconds to unix time</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :   net-&gt;visibility  = 25000.0;                 // visibility in meters (for env. effects)</span></a>
+<a name="286"><span class="lineNum">     286 </span>            : </a>
+<a name="287"><span class="lineNum">     287 </span>            :   // Control surface positions (normalized values)</a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :   net-&gt;elevator          = (float)(FCS-&gt;GetDePos(ofNorm));    // Norm Elevator Pos, --</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :   net-&gt;elevator_trim_tab = (float)(FCS-&gt;GetPitchTrimCmd());   // Norm Elev Trim Tab Pos, --</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :   net-&gt;left_flap         = (float)(FCS-&gt;GetDfPos(ofNorm));    // Norm Flap Pos, --</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :   net-&gt;right_flap        = (float)(FCS-&gt;GetDfPos(ofNorm));    // Norm Flap Pos, --</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :   net-&gt;left_aileron      = (float)(FCS-&gt;GetDaLPos(ofNorm));   // Norm L Aileron Pos, --</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :   net-&gt;right_aileron     = (float)(FCS-&gt;GetDaRPos(ofNorm));   // Norm R Aileron Pos, --</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :   net-&gt;rudder            = (float)(FCS-&gt;GetDrPos(ofNorm));    // Norm Rudder Pos, --</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :   net-&gt;nose_wheel        = (float)(FCS-&gt;GetDrPos(ofNorm));    // *** FIX ***  Using Rudder Pos for NWS, --</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineNoCov">          0 :   net-&gt;speedbrake        = (float)(FCS-&gt;GetDsbPos(ofNorm));   // Norm Speedbrake Pos, --</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineNoCov">          0 :   net-&gt;spoilers          = (float)(FCS-&gt;GetDspPos(ofNorm));   // Norm Spoiler Pos, --</span></a>
+<a name="298"><span class="lineNum">     298 </span>            : </a>
+<a name="299"><span class="lineNum">     299 </span>            :   // Convert the net buffer to network format</a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 :   if ( isLittleEndian ) {</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineNoCov">          0 :     net-&gt;version = htonl(net-&gt;version);</span></a>
+<a name="302"><span class="lineNum">     302 </span>            : </a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineNoCov">          0 :     htond(net-&gt;longitude);</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :     htond(net-&gt;latitude);</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :     htond(net-&gt;altitude);</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 :     htonf(net-&gt;agl);</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :     htonf(net-&gt;phi);</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :     htonf(net-&gt;theta);</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :     htonf(net-&gt;psi);</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :     htonf(net-&gt;alpha);</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :     htonf(net-&gt;beta);</span></a>
+<a name="312"><span class="lineNum">     312 </span>            : </a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineNoCov">          0 :     htonf(net-&gt;phidot);</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :     htonf(net-&gt;thetadot);</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :     htonf(net-&gt;psidot);</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :     htonf(net-&gt;vcas);</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :     htonf(net-&gt;climb_rate);</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :     htonf(net-&gt;v_north);</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :     htonf(net-&gt;v_east);</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineNoCov">          0 :     htonf(net-&gt;v_down);</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :     htonf(net-&gt;v_body_u);</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :     htonf(net-&gt;v_body_v);</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :     htonf(net-&gt;v_body_w);</span></a>
+<a name="324"><span class="lineNum">     324 </span>            : </a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 :     htonf(net-&gt;A_X_pilot);</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineNoCov">          0 :     htonf(net-&gt;A_Y_pilot);</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :     htonf(net-&gt;A_Z_pilot);</span></a>
+<a name="328"><span class="lineNum">     328 </span>            : </a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :     htonf(net-&gt;stall_warning);</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineNoCov">          0 :     htonf(net-&gt;slip_deg);</span></a>
+<a name="331"><span class="lineNum">     331 </span>            : </a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :     for (i=0; i&lt;net-&gt;num_engines; ++i ) {</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :       net-&gt;eng_state[i] = htonl(net-&gt;eng_state[i]);</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineNoCov">          0 :       htonf(net-&gt;rpm[i]);</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :       htonf(net-&gt;fuel_flow[i]);</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :       htonf(net-&gt;fuel_px[i]);</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :       htonf(net-&gt;egt[i]);</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :       htonf(net-&gt;cht[i]);</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :       htonf(net-&gt;mp_osi[i]);</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :       htonf(net-&gt;tit[i]);</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :       htonf(net-&gt;oil_temp[i]);</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :       htonf(net-&gt;oil_px[i]);</span></a>
+<a name="343"><span class="lineNum">     343 </span>            :     }</a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :     net-&gt;num_engines = htonl(net-&gt;num_engines);</span></a>
+<a name="345"><span class="lineNum">     345 </span>            : </a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 :     for (i=0; i&lt;net-&gt;num_tanks; ++i ) {</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineNoCov">          0 :       htonf(net-&gt;fuel_quantity[i]);</span></a>
+<a name="348"><span class="lineNum">     348 </span>            :     }</a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineNoCov">          0 :     net-&gt;num_tanks = htonl(net-&gt;num_tanks);</span></a>
+<a name="350"><span class="lineNum">     350 </span>            : </a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 :     for (i=0; i&lt;net-&gt;num_wheels; ++i ) {</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :       net-&gt;wow[i] = htonl(net-&gt;wow[i]);</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :       htonf(net-&gt;gear_pos[i]);</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :       htonf(net-&gt;gear_steer[i]);</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineNoCov">          0 :       htonf(net-&gt;gear_compression[i]);</span></a>
+<a name="356"><span class="lineNum">     356 </span>            :     }</a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineNoCov">          0 :     net-&gt;num_wheels = htonl(net-&gt;num_wheels);</span></a>
+<a name="358"><span class="lineNum">     358 </span>            : </a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :     net-&gt;cur_time = htonl( net-&gt;cur_time );</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineNoCov">          0 :     net-&gt;warp = htonl( net-&gt;warp );</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 :     htonf(net-&gt;visibility);</span></a>
+<a name="362"><span class="lineNum">     362 </span>            : </a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineNoCov">          0 :     htonf(net-&gt;elevator);</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineNoCov">          0 :     htonf(net-&gt;elevator_trim_tab);</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineNoCov">          0 :     htonf(net-&gt;left_flap);</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :     htonf(net-&gt;right_flap);</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :     htonf(net-&gt;left_aileron);</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineNoCov">          0 :     htonf(net-&gt;right_aileron);</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineNoCov">          0 :     htonf(net-&gt;rudder);</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineNoCov">          0 :     htonf(net-&gt;nose_wheel);</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineNoCov">          0 :     htonf(net-&gt;speedbrake);</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineNoCov">          0 :     htonf(net-&gt;spoilers);</span></a>
+<a name="373"><span class="lineNum">     373 </span>            :   }</a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="375"><span class="lineNum">     375 </span>            : </a>
+<a name="376"><span class="lineNum">     376 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="377"><span class="lineNum">     377 </span>            : </a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineNoCov">          0 : void FGOutputFG::Print(void)</span></a>
+<a name="379"><span class="lineNum">     379 </span>            : {</a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineNoCov">          0 :   int length = sizeof(fgSockBuf);</span></a>
+<a name="381"><span class="lineNum">     381 </span>            : </a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineNoCov">          0 :   if (socket == 0) return;</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineNoCov">          0 :   if (!socket-&gt;GetConnectStatus()) return;</span></a>
+<a name="384"><span class="lineNum">     384 </span>            : </a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineNoCov">          0 :   SocketDataFill(&amp;fgSockBuf);</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 :   socket-&gt;Send((char *)&amp;fgSockBuf, length);</span></a>
+<a name="387"><span class="lineNum">     387 </span>            : }</a>
+<a name="388"><span class="lineNum">     388 </span>            : }</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

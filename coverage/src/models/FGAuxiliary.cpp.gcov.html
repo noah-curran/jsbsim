@@ -1,0 +1,501 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - JSBSim unit tests - src/models/FGAuxiliary.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/models</a> - FGAuxiliary.cpp<span style="font-size: 80%;"> (source / <a href="FGAuxiliary.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">JSBSim unit tests</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">133</td>
+            <td class="headerCovTableEntry">217</td>
+            <td class="headerCovTableEntryLo">61.3 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-02-13 13:08:09</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryMed">76.9 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="2"><span class="lineNum">       2 </span>            : </a>
+<a name="3"><span class="lineNum">       3 </span>            :  Module:       FGAuxiliary.cpp</a>
+<a name="4"><span class="lineNum">       4 </span>            :  Author:       Tony Peden, Jon Berndt</a>
+<a name="5"><span class="lineNum">       5 </span>            :  Date started: 01/26/99</a>
+<a name="6"><span class="lineNum">       6 </span>            :  Purpose:      Calculates additional parameters needed by the visual system, etc.</a>
+<a name="7"><span class="lineNum">       7 </span>            :  Called by:    FGFDMExec</a>
+<a name="8"><span class="lineNum">       8 </span>            : </a>
+<a name="9"><span class="lineNum">       9 </span>            :  ------------- Copyright (C) 1999  Jon S. Berndt (jon@jsbsim.org) -------------</a>
+<a name="10"><span class="lineNum">      10 </span>            : </a>
+<a name="11"><span class="lineNum">      11 </span>            :  This program is free software; you can redistribute it and/or modify it under</a>
+<a name="12"><span class="lineNum">      12 </span>            :  the terms of the GNU Lesser General Public License as published by the Free</a>
+<a name="13"><span class="lineNum">      13 </span>            :  Software Foundation; either version 2 of the License, or (at your option) any</a>
+<a name="14"><span class="lineNum">      14 </span>            :  later version.</a>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span>            :  This program is distributed in the hope that it will be useful, but WITHOUT</a>
+<a name="17"><span class="lineNum">      17 </span>            :  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS</a>
+<a name="18"><span class="lineNum">      18 </span>            :  FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more</a>
+<a name="19"><span class="lineNum">      19 </span>            :  details.</a>
+<a name="20"><span class="lineNum">      20 </span>            : </a>
+<a name="21"><span class="lineNum">      21 </span>            :  You should have received a copy of the GNU Lesser General Public License along</a>
+<a name="22"><span class="lineNum">      22 </span>            :  with this program; if not, write to the Free Software Foundation, Inc., 59</a>
+<a name="23"><span class="lineNum">      23 </span>            :  Temple Place - Suite 330, Boston, MA 02111-1307, USA.</a>
+<a name="24"><span class="lineNum">      24 </span>            : </a>
+<a name="25"><span class="lineNum">      25 </span>            :  Further information about the GNU Lesser General Public License can also be</a>
+<a name="26"><span class="lineNum">      26 </span>            :  found on the world wide web at http://www.gnu.org.</a>
+<a name="27"><span class="lineNum">      27 </span>            : </a>
+<a name="28"><span class="lineNum">      28 </span>            : FUNCTIONAL DESCRIPTION</a>
+<a name="29"><span class="lineNum">      29 </span>            : --------------------------------------------------------------------------------</a>
+<a name="30"><span class="lineNum">      30 </span>            : This class calculates various auxiliary parameters.</a>
+<a name="31"><span class="lineNum">      31 </span>            : </a>
+<a name="32"><span class="lineNum">      32 </span>            : REFERENCES</a>
+<a name="33"><span class="lineNum">      33 </span>            :   Anderson, John D. &quot;Introduction to Flight&quot;, 3rd Edition, McGraw-Hill, 1989</a>
+<a name="34"><span class="lineNum">      34 </span>            :                     pgs. 112-126</a>
+<a name="35"><span class="lineNum">      35 </span>            : HISTORY</a>
+<a name="36"><span class="lineNum">      36 </span>            : --------------------------------------------------------------------------------</a>
+<a name="37"><span class="lineNum">      37 </span>            : 01/26/99   JSB   Created</a>
+<a name="38"><span class="lineNum">      38 </span>            : </a>
+<a name="39"><span class="lineNum">      39 </span>            : %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="40"><span class="lineNum">      40 </span>            : INCLUDES</a>
+<a name="41"><span class="lineNum">      41 </span>            : %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/</a>
+<a name="42"><span class="lineNum">      42 </span>            : </a>
+<a name="43"><span class="lineNum">      43 </span>            : #include &lt;iostream&gt;</a>
+<a name="44"><span class="lineNum">      44 </span>            : </a>
+<a name="45"><span class="lineNum">      45 </span>            : #include &quot;FGAuxiliary.h&quot;</a>
+<a name="46"><span class="lineNum">      46 </span>            : #include &quot;initialization/FGInitialCondition.h&quot;</a>
+<a name="47"><span class="lineNum">      47 </span>            : #include &quot;FGFDMExec.h&quot;</a>
+<a name="48"><span class="lineNum">      48 </span>            : #include &quot;input_output/FGPropertyManager.h&quot;</a>
+<a name="49"><span class="lineNum">      49 </span>            : #include &quot;FGInertial.h&quot;</a>
+<a name="50"><span class="lineNum">      50 </span>            : </a>
+<a name="51"><span class="lineNum">      51 </span>            : using namespace std;</a>
+<a name="52"><span class="lineNum">      52 </span>            : </a>
+<a name="53"><span class="lineNum">      53 </span>            : namespace JSBSim {</a>
+<a name="54"><span class="lineNum">      54 </span>            : </a>
+<a name="55"><span class="lineNum">      55 </span>            : /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="56"><span class="lineNum">      56 </span>            : CLASS IMPLEMENTATION</a>
+<a name="57"><span class="lineNum">      57 </span>            : %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/</a>
+<a name="58"><span class="lineNum">      58 </span>            : </a>
+<a name="59"><span class="lineNum">      59 </span>            : </a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">          9 : FGAuxiliary::FGAuxiliary(FGFDMExec* fdmex) : FGModel(fdmex)</span></a>
+<a name="61"><span class="lineNum">      61 </span>            : {</a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          9 :   Name = &quot;FGAuxiliary&quot;;</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          9 :   pt = 2116.23; // ISA SL pressure</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">          9 :   tatc = 15.0; // ISA SL temperature</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          9 :   tat = 518.67;</span></a>
+<a name="66"><span class="lineNum">      66 </span>            : </a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          9 :   vcas = veas = 0.0;</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          9 :   qbar = qbarUW = qbarUV = 0.0;</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          9 :   Mach = MachU = 0.0;</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          9 :   alpha = beta = 0.0;</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          9 :   adot = bdot = 0.0;</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          9 :   gamma = Vt = Vground = 0.0;</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          9 :   psigt = 0.0;</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          9 :   day_of_year = 1;</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          9 :   seconds_in_day = 0.0;</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          9 :   hoverbmac = hoverbcg = 0.0;</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          9 :   Re = 0.0;</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          9 :   Nx = Ny = Nz = 0.0;</span></a>
+<a name="79"><span class="lineNum">      79 </span>            : </a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          9 :   vPilotAccel.InitMatrix();</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          9 :   vPilotAccelN.InitMatrix();</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">          9 :   vAeroUVW.InitMatrix();</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          9 :   vAeroPQR.InitMatrix();</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">          9 :   vMachUVW.InitMatrix();</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          9 :   vEulerRates.InitMatrix();</span></a>
+<a name="86"><span class="lineNum">      86 </span>            : </a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">          9 :   bind();</span></a>
+<a name="88"><span class="lineNum">      88 </span>            : </a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          9 :   Debug(0);</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          9 : }</span></a>
+<a name="91"><span class="lineNum">      91 </span>            : </a>
+<a name="92"><span class="lineNum">      92 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="93"><span class="lineNum">      93 </span>            : </a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          9 : bool FGAuxiliary::InitModel(void)</span></a>
+<a name="95"><span class="lineNum">      95 </span>            : {</a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          9 :   if (!FGModel::InitModel()) return false;</span></a>
+<a name="97"><span class="lineNum">      97 </span>            : </a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          9 :   pt = in.Pressure;</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          9 :   tat = in.Temperature;</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          9 :   tatc = RankineToCelsius(tat);</span></a>
+<a name="101"><span class="lineNum">     101 </span>            : </a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          9 :   vcas = veas = 0.0;</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">          9 :   qbar = qbarUW = qbarUV = 0.0;</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">          9 :   Mach = MachU = 0.0;</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">          9 :   alpha = beta = 0.0;</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          9 :   adot = bdot = 0.0;</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          9 :   gamma = Vt = Vground = 0.0;</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          9 :   psigt = 0.0;</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          9 :   day_of_year = 1;</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          9 :   seconds_in_day = 0.0;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          9 :   hoverbmac = hoverbcg = 0.0;</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          9 :   Re = 0.0;</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          9 :   Nz = Ny = 0.0;</span></a>
+<a name="114"><span class="lineNum">     114 </span>            : </a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          9 :   vPilotAccel.InitMatrix();</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          9 :   vPilotAccelN.InitMatrix();</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          9 :   vAeroUVW.InitMatrix();</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          9 :   vAeroPQR.InitMatrix();</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          9 :   vMachUVW.InitMatrix();</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          9 :   vEulerRates.InitMatrix();</span></a>
+<a name="121"><span class="lineNum">     121 </span>            : </a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          9 :   return true;</span></a>
+<a name="123"><span class="lineNum">     123 </span>            : }</a>
+<a name="124"><span class="lineNum">     124 </span>            : </a>
+<a name="125"><span class="lineNum">     125 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="126"><span class="lineNum">     126 </span>            : </a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         18 : FGAuxiliary::~FGAuxiliary()</span></a>
+<a name="128"><span class="lineNum">     128 </span>            : {</a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          9 :   Debug(1);</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">         18 : }</span></a>
+<a name="131"><span class="lineNum">     131 </span>            : </a>
+<a name="132"><span class="lineNum">     132 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="133"><span class="lineNum">     133 </span>            : </a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 : bool FGAuxiliary::Run(bool Holding)</span></a>
+<a name="135"><span class="lineNum">     135 </span>            : {</a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :   if (FGModel::Run(Holding)) return true; // return true if error returned from base class</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :   if (Holding) return false;</span></a>
+<a name="138"><span class="lineNum">     138 </span>            : </a>
+<a name="139"><span class="lineNum">     139 </span>            :   // Rotation</a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :   vEulerRates(eTht) = in.vPQR(eQ)*in.CosPhi - in.vPQR(eR)*in.SinPhi;</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 :   if (in.CosTht != 0.0) {</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :     vEulerRates(ePsi) = (in.vPQR(eQ)*in.SinPhi + in.vPQR(eR)*in.CosPhi)/in.CosTht;</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :     vEulerRates(ePhi) = in.vPQR(eP) + vEulerRates(ePsi)*in.SinTht;</span></a>
+<a name="145"><span class="lineNum">     145 </span>            :   }</a>
+<a name="146"><span class="lineNum">     146 </span>            : </a>
+<a name="147"><span class="lineNum">     147 </span>            :   // Combine the wind speed with aircraft speed to obtain wind relative speed</a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :   vAeroPQR = in.vPQR - in.TurbPQR;</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :   vAeroUVW = in.vUVW - in.Tl2b * in.TotalWindNED;</span></a>
+<a name="150"><span class="lineNum">     150 </span>            : </a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :   alpha = beta = adot = bdot = 0;</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :   double AeroU2 = vAeroUVW(eU)*vAeroUVW(eU);</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :   double AeroV2 = vAeroUVW(eV)*vAeroUVW(eV);</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :   double AeroW2 = vAeroUVW(eW)*vAeroUVW(eW);</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :   double mUW = AeroU2 + AeroW2;</span></a>
+<a name="156"><span class="lineNum">     156 </span>            : </a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :   double Vt2 = mUW + AeroV2;</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :   Vt = sqrt(Vt2);</span></a>
+<a name="159"><span class="lineNum">     159 </span>            : </a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :   if ( Vt &gt; 0.001 ) {</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :     beta = atan2(vAeroUVW(eV), sqrt(mUW));</span></a>
+<a name="162"><span class="lineNum">     162 </span>            : </a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :     if ( mUW &gt;= 1E-6 ) {</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :       alpha = atan2(vAeroUVW(eW), vAeroUVW(eU));</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :       double Vtdot = (vAeroUVW(eU)*in.vUVWdot(eU) + vAeroUVW(eV)*in.vUVWdot(eV) + vAeroUVW(eW)*in.vUVWdot(eW))/Vt;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :       adot = (vAeroUVW(eU)*in.vUVWdot(eW) - vAeroUVW(eW)*in.vUVWdot(eU))/mUW;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :       bdot = (in.vUVWdot(eV)*Vt - vAeroUVW(eV)*Vtdot)/(Vt*sqrt(mUW));</span></a>
+<a name="168"><span class="lineNum">     168 </span>            :     }</a>
+<a name="169"><span class="lineNum">     169 </span>            :   }</a>
+<a name="170"><span class="lineNum">     170 </span>            : </a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :   UpdateWindMatrices();</span></a>
+<a name="172"><span class="lineNum">     172 </span>            : </a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :   Re = Vt * in.Wingchord / in.KinematicViscosity;</span></a>
+<a name="174"><span class="lineNum">     174 </span>            : </a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineNoCov">          0 :   double densityD2 = 0.5*in.Density;</span></a>
+<a name="176"><span class="lineNum">     176 </span>            : </a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :   qbar = densityD2 * Vt2;</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 :   qbarUW = densityD2 * (mUW);</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :   qbarUV = densityD2 * (AeroU2 + AeroV2);</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 :   Mach = Vt / in.SoundSpeed;</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineNoCov">          0 :   MachU = vMachUVW(eU) = vAeroUVW(eU) / in.SoundSpeed;</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :   vMachUVW(eV) = vAeroUVW(eV) / in.SoundSpeed;</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :   vMachUVW(eW) = vAeroUVW(eW) / in.SoundSpeed;</span></a>
+<a name="184"><span class="lineNum">     184 </span>            : </a>
+<a name="185"><span class="lineNum">     185 </span>            :   // Position</a>
+<a name="186"><span class="lineNum">     186 </span>            : </a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineNoCov">          0 :   Vground = sqrt( in.vVel(eNorth)*in.vVel(eNorth) + in.vVel(eEast)*in.vVel(eEast) );</span></a>
+<a name="188"><span class="lineNum">     188 </span>            : </a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :   psigt = atan2(in.vVel(eEast), in.vVel(eNorth));</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 :   if (psigt &lt; 0.0) psigt += 2*M_PI;</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :   gamma = atan2(-in.vVel(eDown), Vground);</span></a>
+<a name="192"><span class="lineNum">     192 </span>            : </a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :   tat = in.Temperature*(1 + 0.2*Mach*Mach); // Total Temperature, isentropic flow</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :   tatc = RankineToCelsius(tat);</span></a>
+<a name="195"><span class="lineNum">     195 </span>            : </a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :   pt = PitotTotalPressure(Mach, in.Pressure);</span></a>
+<a name="197"><span class="lineNum">     197 </span>            : </a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :   if (abs(Mach) &gt; 0.0) {</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :     vcas = VcalibratedFromMach(Mach, in.Pressure);</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :     veas = sqrt(2 * qbar / in.DensitySL);</span></a>
+<a name="201"><span class="lineNum">     201 </span>            :   }</a>
+<a name="202"><span class="lineNum">     202 </span>            :   else</a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :     vcas = veas = 0.0;</span></a>
+<a name="204"><span class="lineNum">     204 </span>            : </a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :   vPilotAccel.InitMatrix();</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :   vNcg = in.vBodyAccel/in.StandardGravity;</span></a>
+<a name="207"><span class="lineNum">     207 </span>            :   // Nz is Acceleration in &quot;g's&quot;, along normal axis (-Z body axis)</a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 :   Nz = -vNcg(eZ);</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :   Ny =  vNcg(eY);</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 :   Nx =  vNcg(eX);</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :   vPilotAccel = in.vBodyAccel + in.vPQRidot * in.ToEyePt;</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 :   vPilotAccel += in.vPQRi * (in.vPQRi * in.ToEyePt);</span></a>
+<a name="213"><span class="lineNum">     213 </span>            : </a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :   vNwcg = mTb2w * vNcg;</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :   vNwcg(eZ) = 1.0 - vNwcg(eZ);</span></a>
+<a name="216"><span class="lineNum">     216 </span>            : </a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :   vPilotAccelN = vPilotAccel / in.StandardGravity;</span></a>
+<a name="218"><span class="lineNum">     218 </span>            : </a>
+<a name="219"><span class="lineNum">     219 </span>            :   // VRP computation</a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :   vLocationVRP = in.vLocation.LocalToLocation( in.Tb2l * in.VRPBody );</span></a>
+<a name="221"><span class="lineNum">     221 </span>            : </a>
+<a name="222"><span class="lineNum">     222 </span>            :   // Recompute some derived values now that we know the dependent parameters values ...</a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :   hoverbcg = in.DistanceAGL / in.Wingspan;</span></a>
+<a name="224"><span class="lineNum">     224 </span>            : </a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 :   FGColumnVector3 vMac = in.Tb2l * in.RPBody;</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :   hoverbmac = (in.DistanceAGL - vMac(3)) / in.Wingspan;</span></a>
+<a name="227"><span class="lineNum">     227 </span>            : </a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :   return false;</span></a>
+<a name="229"><span class="lineNum">     229 </span>            : }</a>
+<a name="230"><span class="lineNum">     230 </span>            : </a>
+<a name="231"><span class="lineNum">     231 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="232"><span class="lineNum">     232 </span>            : //</a>
+<a name="233"><span class="lineNum">     233 </span>            : // From Stevens and Lewis, &quot;Aircraft Control and Simulation&quot;, 3rd Ed., the</a>
+<a name="234"><span class="lineNum">     234 </span>            : // transformation from body to wind axes is defined (where &quot;a&quot; is alpha and &quot;B&quot;</a>
+<a name="235"><span class="lineNum">     235 </span>            : // is beta):</a>
+<a name="236"><span class="lineNum">     236 </span>            : //</a>
+<a name="237"><span class="lineNum">     237 </span>            : //   cos(a)*cos(B)     sin(B)    sin(a)*cos(B)</a>
+<a name="238"><span class="lineNum">     238 </span>            : //  -cos(a)*sin(B)     cos(B)   -sin(a)*sin(B)</a>
+<a name="239"><span class="lineNum">     239 </span>            : //  -sin(a)              0       cos(a)</a>
+<a name="240"><span class="lineNum">     240 </span>            : //</a>
+<a name="241"><span class="lineNum">     241 </span>            : // The transform from wind to body axes is then,</a>
+<a name="242"><span class="lineNum">     242 </span>            : //</a>
+<a name="243"><span class="lineNum">     243 </span>            : //   cos(a)*cos(B)  -cos(a)*sin(B)  -sin(a)</a>
+<a name="244"><span class="lineNum">     244 </span>            : //          sin(B)          cos(B)     0</a>
+<a name="245"><span class="lineNum">     245 </span>            : //   sin(a)*cos(B)  -sin(a)*sin(B)   cos(a)</a>
+<a name="246"><span class="lineNum">     246 </span>            : </a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 : void FGAuxiliary::UpdateWindMatrices(void)</span></a>
+<a name="248"><span class="lineNum">     248 </span>            : {</a>
+<a name="249"><span class="lineNum">     249 </span>            :   double ca, cb, sa, sb;</a>
+<a name="250"><span class="lineNum">     250 </span>            : </a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :   ca = cos(alpha);</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :   sa = sin(alpha);</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :   cb = cos(beta);</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :   sb = sin(beta);</span></a>
+<a name="255"><span class="lineNum">     255 </span>            : </a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :   mTw2b(1,1) =  ca*cb;</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :   mTw2b(1,2) = -ca*sb;</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :   mTw2b(1,3) = -sa;</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 :   mTw2b(2,1) =  sb;</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :   mTw2b(2,2) =  cb;</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :   mTw2b(2,3) =  0.0;</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :   mTw2b(3,1) =  sa*cb;</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :   mTw2b(3,2) = -sa*sb;</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :   mTw2b(3,3) =  ca;</span></a>
+<a name="265"><span class="lineNum">     265 </span>            : </a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :   mTb2w = mTw2b.Transposed();</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="268"><span class="lineNum">     268 </span>            : </a>
+<a name="269"><span class="lineNum">     269 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="270"><span class="lineNum">     270 </span>            : </a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          9 : double FGAuxiliary::GetNlf(void) const</span></a>
+<a name="272"><span class="lineNum">     272 </span>            : {</a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          9 :   if (in.Mass != 0)</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :     return (in.vFw(3))/(in.Mass*slugtolb);</span></a>
+<a name="275"><span class="lineNum">     275 </span>            :   else</a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          9 :     return 0.;</span></a>
+<a name="277"><span class="lineNum">     277 </span>            : }</a>
+<a name="278"><span class="lineNum">     278 </span>            : </a>
+<a name="279"><span class="lineNum">     279 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="280"><span class="lineNum">     280 </span>            : </a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          9 : double FGAuxiliary::GetLongitudeRelativePosition(void) const</span></a>
+<a name="282"><span class="lineNum">     282 </span>            : {</a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          9 :   return in.vLocation.GetDistanceTo(FDMExec-&gt;GetIC()-&gt;GetLongitudeRadIC(),</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">          9 :                                     in.vLocation.GetLatitude())* fttom;</span></a>
+<a name="285"><span class="lineNum">     285 </span>            : }</a>
+<a name="286"><span class="lineNum">     286 </span>            : </a>
+<a name="287"><span class="lineNum">     287 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="288"><span class="lineNum">     288 </span>            : </a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          9 : double FGAuxiliary::GetLatitudeRelativePosition(void) const</span></a>
+<a name="290"><span class="lineNum">     290 </span>            : {</a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">          9 :   return in.vLocation.GetDistanceTo(in.vLocation.GetLongitude(),</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">         18 :                                     FDMExec-&gt;GetIC()-&gt;GetLatitudeRadIC())* fttom;</span></a>
+<a name="293"><span class="lineNum">     293 </span>            : }</a>
+<a name="294"><span class="lineNum">     294 </span>            : </a>
+<a name="295"><span class="lineNum">     295 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="296"><span class="lineNum">     296 </span>            : </a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">          9 : double FGAuxiliary::GetDistanceRelativePosition(void) const</span></a>
+<a name="298"><span class="lineNum">     298 </span>            : {</a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          9 :   FGInitialCondition *ic = FDMExec-&gt;GetIC();</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          9 :   return in.vLocation.GetDistanceTo(ic-&gt;GetLongitudeRadIC(),</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          9 :                                     ic-&gt;GetLatitudeRadIC())* fttom;</span></a>
+<a name="302"><span class="lineNum">     302 </span>            : }</a>
+<a name="303"><span class="lineNum">     303 </span>            : </a>
+<a name="304"><span class="lineNum">     304 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="305"><span class="lineNum">     305 </span>            : </a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">          9 : void FGAuxiliary::bind(void)</span></a>
+<a name="307"><span class="lineNum">     307 </span>            : {</a>
+<a name="308"><span class="lineNum">     308 </span>            :   typedef double (FGAuxiliary::*PMF)(int) const;</a>
+<a name="309"><span class="lineNum">     309 </span>            :   typedef double (FGAuxiliary::*PF)(void) const;</a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;propulsion/tat-r&quot;, this, &amp;FGAuxiliary::GetTotalTemperature);</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;propulsion/tat-c&quot;, this, &amp;FGAuxiliary::GetTAT_C);</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;propulsion/pt-lbs_sqft&quot;, this, &amp;FGAuxiliary::GetTotalPressure);</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/vc-fps&quot;, this, &amp;FGAuxiliary::GetVcalibratedFPS);</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/vc-kts&quot;, this, &amp;FGAuxiliary::GetVcalibratedKTS);</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/ve-fps&quot;, this, &amp;FGAuxiliary::GetVequivalentFPS);</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/ve-kts&quot;, this, &amp;FGAuxiliary::GetVequivalentKTS);</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/vtrue-fps&quot;, this, &amp;FGAuxiliary::GetVtrueFPS);</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/vtrue-kts&quot;, this, &amp;FGAuxiliary::GetVtrueKTS);</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/machU&quot;, this, &amp;FGAuxiliary::GetMachU);</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/p-aero-rad_sec&quot;, this, eX, (PMF)&amp;FGAuxiliary::GetAeroPQR);</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/q-aero-rad_sec&quot;, this, eY, (PMF)&amp;FGAuxiliary::GetAeroPQR);</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/r-aero-rad_sec&quot;, this, eZ, (PMF)&amp;FGAuxiliary::GetAeroPQR);</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/phidot-rad_sec&quot;, this, ePhi, (PMF)&amp;FGAuxiliary::GetEulerRates);</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/thetadot-rad_sec&quot;, this, eTht, (PMF)&amp;FGAuxiliary::GetEulerRates);</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/psidot-rad_sec&quot;, this, ePsi, (PMF)&amp;FGAuxiliary::GetEulerRates);</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/u-aero-fps&quot;, this, eU, (PMF)&amp;FGAuxiliary::GetAeroUVW);</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/v-aero-fps&quot;, this, eV, (PMF)&amp;FGAuxiliary::GetAeroUVW);</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/w-aero-fps&quot;, this, eW, (PMF)&amp;FGAuxiliary::GetAeroUVW);</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/vt-fps&quot;, this, &amp;FGAuxiliary::GetVt);</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/mach&quot;, this, &amp;FGAuxiliary::GetMach);</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;velocities/vg-fps&quot;, this, &amp;FGAuxiliary::GetVground);</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;accelerations/a-pilot-x-ft_sec2&quot;, this, eX, (PMF)&amp;FGAuxiliary::GetPilotAccel);</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;accelerations/a-pilot-y-ft_sec2&quot;, this, eY, (PMF)&amp;FGAuxiliary::GetPilotAccel);</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;accelerations/a-pilot-z-ft_sec2&quot;, this, eZ, (PMF)&amp;FGAuxiliary::GetPilotAccel);</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;accelerations/n-pilot-x-norm&quot;, this, eX, (PMF)&amp;FGAuxiliary::GetNpilot);</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;accelerations/n-pilot-y-norm&quot;, this, eY, (PMF)&amp;FGAuxiliary::GetNpilot);</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;accelerations/n-pilot-z-norm&quot;, this, eZ, (PMF)&amp;FGAuxiliary::GetNpilot);</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;accelerations/Nx&quot;, this, &amp;FGAuxiliary::GetNx);</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;accelerations/Ny&quot;, this, &amp;FGAuxiliary::GetNy);</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;accelerations/Nz&quot;, this, &amp;FGAuxiliary::GetNz);</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;forces/load-factor&quot;, this, &amp;FGAuxiliary::GetNlf);</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/alpha-rad&quot;, this, (PF)&amp;FGAuxiliary::Getalpha);</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/beta-rad&quot;, this, (PF)&amp;FGAuxiliary::Getbeta);</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/mag-beta-rad&quot;, this, (PF)&amp;FGAuxiliary::GetMagBeta);</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/alpha-deg&quot;, this, inDegrees, (PMF)&amp;FGAuxiliary::Getalpha);</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/beta-deg&quot;, this, inDegrees, (PMF)&amp;FGAuxiliary::Getbeta);</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/mag-beta-deg&quot;, this, inDegrees, (PMF)&amp;FGAuxiliary::GetMagBeta);</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/Re&quot;, this, &amp;FGAuxiliary::GetReynoldsNumber);</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/qbar-psf&quot;, this, &amp;FGAuxiliary::Getqbar);</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/qbarUW-psf&quot;, this, &amp;FGAuxiliary::GetqbarUW);</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/qbarUV-psf&quot;, this, &amp;FGAuxiliary::GetqbarUV);</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/alphadot-rad_sec&quot;, this, (PF)&amp;FGAuxiliary::Getadot);</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/betadot-rad_sec&quot;, this, (PF)&amp;FGAuxiliary::Getbdot);</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/alphadot-deg_sec&quot;, this, inDegrees, (PMF)&amp;FGAuxiliary::Getadot);</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/betadot-deg_sec&quot;, this, inDegrees, (PMF)&amp;FGAuxiliary::Getbdot);</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/h_b-cg-ft&quot;, this, &amp;FGAuxiliary::GetHOverBCG);</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;aero/h_b-mac-ft&quot;, this, &amp;FGAuxiliary::GetHOverBMAC);</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;flight-path/gamma-rad&quot;, this, &amp;FGAuxiliary::GetGamma);</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;flight-path/gamma-deg&quot;, this, inDegrees, (PMF)&amp;FGAuxiliary::GetGamma);</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;flight-path/psi-gt-rad&quot;, this, &amp;FGAuxiliary::GetGroundTrack);</span></a>
+<a name="361"><span class="lineNum">     361 </span>            : </a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;position/distance-from-start-lon-mt&quot;, this, &amp;FGAuxiliary::GetLongitudeRelativePosition);</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;position/distance-from-start-lat-mt&quot;, this, &amp;FGAuxiliary::GetLatitudeRelativePosition);</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;position/distance-from-start-mag-mt&quot;, this, &amp;FGAuxiliary::GetDistanceRelativePosition);</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;position/vrp-gc-latitude_deg&quot;, &amp;vLocationVRP, &amp;FGLocation::GetLatitudeDeg);</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;position/vrp-longitude_deg&quot;, &amp;vLocationVRP, &amp;FGLocation::GetLongitudeDeg);</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          9 :   PropertyManager-&gt;Tie(&quot;position/vrp-radius-ft&quot;, &amp;vLocationVRP, &amp;FGLocation::GetRadius);</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          9 : }</span></a>
+<a name="369"><span class="lineNum">     369 </span>            : </a>
+<a name="370"><span class="lineNum">     370 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="371"><span class="lineNum">     371 </span>            : </a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineNoCov">          0 : double FGAuxiliary::BadUnits(void) const</span></a>
+<a name="373"><span class="lineNum">     373 </span>            : {</a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 :   cerr &lt;&lt; &quot;Bad units&quot; &lt;&lt; endl; return 0.0;</span></a>
+<a name="375"><span class="lineNum">     375 </span>            : }</a>
+<a name="376"><span class="lineNum">     376 </span>            : </a>
+<a name="377"><span class="lineNum">     377 </span>            : //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="378"><span class="lineNum">     378 </span>            : //    The bitmasked value choices are as follows:</a>
+<a name="379"><span class="lineNum">     379 </span>            : //    unset: In this case (the default) JSBSim would only print</a>
+<a name="380"><span class="lineNum">     380 </span>            : //       out the normally expected messages, essentially echoing</a>
+<a name="381"><span class="lineNum">     381 </span>            : //       the config files as they are read. If the environment</a>
+<a name="382"><span class="lineNum">     382 </span>            : //       variable is not set, debug_lvl is set to 1 internally</a>
+<a name="383"><span class="lineNum">     383 </span>            : //    0: This requests JSBSim not to output any messages</a>
+<a name="384"><span class="lineNum">     384 </span>            : //       whatsoever.</a>
+<a name="385"><span class="lineNum">     385 </span>            : //    1: This value explicity requests the normal JSBSim</a>
+<a name="386"><span class="lineNum">     386 </span>            : //       startup messages</a>
+<a name="387"><span class="lineNum">     387 </span>            : //    2: This value asks for a message to be printed out when</a>
+<a name="388"><span class="lineNum">     388 </span>            : //       a class is instantiated</a>
+<a name="389"><span class="lineNum">     389 </span>            : //    4: When this value is set, a message is displayed when a</a>
+<a name="390"><span class="lineNum">     390 </span>            : //       FGModel object executes its Run() method</a>
+<a name="391"><span class="lineNum">     391 </span>            : //    8: When this value is set, various runtime state variables</a>
+<a name="392"><span class="lineNum">     392 </span>            : //       are printed out periodically</a>
+<a name="393"><span class="lineNum">     393 </span>            : //    16: When set various parameters are sanity checked and</a>
+<a name="394"><span class="lineNum">     394 </span>            : //       a message is printed out when they go out of bounds</a>
+<a name="395"><span class="lineNum">     395 </span>            : </a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         18 : void FGAuxiliary::Debug(int from)</span></a>
+<a name="397"><span class="lineNum">     397 </span>            : {</a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">         18 :   if (debug_lvl &lt;= 0) return;</span></a>
+<a name="399"><span class="lineNum">     399 </span>            : </a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">         18 :   if (debug_lvl &amp; 1) { // Standard console startup message output</span></a>
+<a name="401"><span class="lineNum">     401 </span>            :     if (from == 0) { // Constructor</a>
+<a name="402"><span class="lineNum">     402 </span>            : </a>
+<a name="403"><span class="lineNum">     403 </span>            :     }</a>
+<a name="404"><span class="lineNum">     404 </span>            :   }</a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         18 :   if (debug_lvl &amp; 2 ) { // Instantiation/Destruction notification</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :     if (from == 0) cout &lt;&lt; &quot;Instantiated: FGAuxiliary&quot; &lt;&lt; endl;</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineNoCov">          0 :     if (from == 1) cout &lt;&lt; &quot;Destroyed:    FGAuxiliary&quot; &lt;&lt; endl;</span></a>
+<a name="408"><span class="lineNum">     408 </span>            :   }</a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">         18 :   if (debug_lvl &amp; 4 ) { // Run() method entry print for FGModel-derived objects</span></a>
+<a name="410"><span class="lineNum">     410 </span>            :   }</a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">         18 :   if (debug_lvl &amp; 8 ) { // Runtime state variables</span></a>
+<a name="412"><span class="lineNum">     412 </span>            :   }</a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         18 :   if (debug_lvl &amp; 16) { // Sanity checking</span></a>
+<a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 :     if (Mach &gt; 100 || Mach &lt; 0.00)</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineNoCov">          0 :       cout &lt;&lt; &quot;FGPropagate::Mach is out of bounds: &quot; &lt;&lt; Mach &lt;&lt; endl;</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineNoCov">          0 :     if (qbar &gt; 1e6 || qbar &lt; 0.00)</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineNoCov">          0 :       cout &lt;&lt; &quot;FGPropagate::qbar is out of bounds: &quot; &lt;&lt; qbar &lt;&lt; endl;</span></a>
+<a name="418"><span class="lineNum">     418 </span>            :   }</a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">         18 :   if (debug_lvl &amp; 64) {</span></a>
+<a name="420"><span class="lineNum">     420 </span>            :     if (from == 0) { // Constructor</a>
+<a name="421"><span class="lineNum">     421 </span>            :     }</a>
+<a name="422"><span class="lineNum">     422 </span>            :   }</a>
+<a name="423"><span class="lineNum">     423 </span>            : }</a>
+<a name="424"><span class="lineNum">     424 </span>            : </a>
+<a name="425"><span class="lineNum">     425 </span>            : } // namespace JSBSim</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

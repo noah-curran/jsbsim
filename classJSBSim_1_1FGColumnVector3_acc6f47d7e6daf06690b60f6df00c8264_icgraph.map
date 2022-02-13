@@ -1,0 +1,7 @@
+<map id="Normalize" name="Normalize">
+<area shape="rect" id="node1" title="Normalize." alt="" coords="488,46,577,73"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInertial.html#a6d0c95d18efaa1d57774a5caf0fd8026" title="Transform matrix from the local horizontal frame to earth centered." alt="" coords="273,5,413,47"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGInitialCondition.html#a4e35ac529197f0bbcd476f52eae08a40" title="Sets the initial sideslip angle." alt="" coords="247,71,440,112"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGInertial.html#a891d6a4818f727f19c512da34b692871" title="Transform matrix from the earth centered to local horizontal frame." alt="" coords="32,5,172,47"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGInitialCondition.html#abffe2ecc4a7f992d6e4a8569e374eb5e" title="Sets angle of sideslip initial condition in degrees." alt="" coords="5,71,199,112"/>
+</map>

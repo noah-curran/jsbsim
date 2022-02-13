@@ -1,0 +1,4 @@
+<map id="GetClimbRateFpsIC" name="GetClimbRateFpsIC">
+<area shape="rect" id="node1" title="Gets the initial climb rate." alt="" coords="5,13,155,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGQuaternion.html#ab0e5564df2ba8ac3f2db0a760e64c564" title="Backward transformation matrix." alt="" coords="203,5,369,47"/>
+</map>

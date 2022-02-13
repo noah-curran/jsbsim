@@ -1,0 +1,6 @@
+<map id="GetAltitudeASLmeters" name="GetAltitudeASLmeters">
+<area shape="rect" id="node1" title="Returns the current altitude above sea level." alt="" coords="5,46,172,73"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGPropagate.html#a645621ae6613dac57bf228543069e829" title="Returns the current altitude above sea level." alt="" coords="220,46,340,73"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGLocation.html#aa71688869eede539bff376f43a78ea14" title="Get the distance from the center of the earth in feet." alt="" coords="391,5,541,47"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGLocation.html#ab0d754a471a7ec7280549a1ae1f93331" title="Get the sea level radius in feet below the current location." alt="" coords="388,71,544,112"/>
+</map>

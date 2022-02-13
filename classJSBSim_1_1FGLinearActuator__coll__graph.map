@@ -1,0 +1,11 @@
+<map id="FGLinearActuator" name="FGLinearActuator">
+<area shape="rect" id="node1" title="Models a flight control system summing component." alt="" coords="788,191,923,217"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGFCSComponent.html" title="Base class for JSBSim Flight Control System Components." alt="" coords="599,191,739,217"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGJSBBase.html" title="JSBSim Base class." alt="" coords="293,73,387,100"/>
+<area shape="rect" id="node4" title="STL class." alt="" coords="5,43,64,69"/>
+<area shape="rect" id="node5" title=" " alt="" coords="247,125,433,166"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGPropertyManager.html" title=" " alt="" coords="264,191,416,217"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGFCS.html" title="Encapsulates the Flight Control System (FCS) functionality." alt="" coords="307,241,373,268"/>
+<area shape="rect" id="node8" title=" " alt="" coords="247,293,433,334"/>
+<area shape="rect" id="node9" title=" " alt="" coords="271,359,409,385"/>
+</map>

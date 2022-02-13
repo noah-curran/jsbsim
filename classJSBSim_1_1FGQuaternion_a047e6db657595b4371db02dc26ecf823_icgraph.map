@@ -1,0 +1,13 @@
+<map id="GetEuler" name="GetEuler">
+<area shape="rect" id="node1" title="Retrieves the Euler angles." alt="" coords="488,177,567,203"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGPropagate.html#a047e6db657595b4371db02dc26ecf823" title="Retrieves the Euler angles that define the vehicle orientation." alt="" coords="263,5,423,47"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGPropagate.html#a269d067d10ad81cf2b04e951dc1af761" title="Retrieves the Euler angles (in degrees) that define the vehicle orientation." alt="" coords="263,71,423,112"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGInitialCondition.html#a166ec4260ec1051bf83b148a667af572" title="Gets the initial roll angle." alt="" coords="247,136,440,177"/>
+<area shape="rect" id="node8" href="$classJSBSim_1_1FGInitialCondition.html#ac5907b6c99a44689f3220cee1cdf8e33" title="Gets the initial heading angle." alt="" coords="247,267,440,308"/>
+<area shape="rect" id="node9" href="$classJSBSim_1_1FGInitialCondition.html#acd24191b1a1075553a497c6b57014883" title="Gets the initial pitch angle." alt="" coords="247,201,440,243"/>
+<area shape="rect" id="node10" href="$classJSBSim_1_1FGInitialCondition.html#a4e35ac529197f0bbcd476f52eae08a40" title="Sets the initial sideslip angle." alt="" coords="247,332,440,373"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGOutputSocket.html#a0d7143a7146c3401f1c71e68d68097d6" title="Generates the output." alt="" coords="11,5,193,47"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGTrim.html#a6a5e26b6c78ad99b63d075c6acc70679" title="Execute the trim." alt="" coords="14,146,190,173"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGTrimAxis.html#ad2aa672957b8b63104434e1adcce0951" title="Constructor for Trim Axis class." alt="" coords="27,201,177,243"/>
+<area shape="rect" id="node11" href="$classJSBSim_1_1FGInitialCondition.html#abffe2ecc4a7f992d6e4a8569e374eb5e" title="Sets angle of sideslip initial condition in degrees." alt="" coords="5,332,199,373"/>
+</map>

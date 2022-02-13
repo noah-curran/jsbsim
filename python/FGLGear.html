@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>FGLGear &#8212; JSBSim 1.1.11 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FGMassBalance" href="FGMassBalance.html" />
+    <link rel="prev" title="FGJSBBase" href="FGJSBBase.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo_JSBSIM_globe.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="index.html">JSBSim</a></h1>
+
+
+
+<p class="blurb">An open source flight dynamics & control software library</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=JSBSim-Team&repo=jsbsim&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a class="badge" href="https://travis-ci.org/JSBSim-Team/jsbsim">
+    <img
+        alt="https://secure.travis-ci.org/JSBSim-Team/jsbsim.svg?branch=master"
+        src="https://secure.travis-ci.org/JSBSim-Team/jsbsim.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="FGAerodynamics.html">FGAerodynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAircraft.html">FGAircraft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAtmosphere.html">FGAtmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAuxiliary.html">FGAuxiliary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGEngine.html">FGEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGFDMExec.html">FGFDMExec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGGroundReactions.html">FGGroundReactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGJSBBase.html">FGJSBBase</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FGLGear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGMassBalance.html">FGMassBalance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropagate.html">FGPropagate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropertyManager.html">FGPropertyManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropulsion.html">FGPropulsion</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="FGJSBBase.html" title="previous chapter">FGJSBBase</a></li>
+      <li>Next: <a href="FGMassBalance.html" title="next chapter">FGMassBalance</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="fglgear">
+<span id="id1"></span><h1>FGLGear<a class="headerlink" href="#fglgear" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="jsbsim.FGLGear">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">jsbsim.</span></span><span class="sig-name descname"><span class="pre">FGLGear</span></span><a class="headerlink" href="#jsbsim.FGLGear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Landing gear model.</p>
+<p>Calculates forces and moments due to landing gear reactions. This is
+done in several steps, and is dependent on what kind of gear is being
+modeled. Here are the parameters that can be specified in the config
+file for modeling landing gear:</p>
+<p class="rubric">Physical Characteristics</p>
+<ol class="arabic simple">
+<li><p>X, Y, Z location, in inches in structural coordinate frame</p></li>
+<li><p>Spring constant, in lbs/ft</p></li>
+<li><p>Damping coefficient, in lbs/ft/sec</p></li>
+<li><p>Dynamic Friction Coefficient</p></li>
+<li><p>Static Friction Coefficient</p></li>
+</ol>
+<p class="rubric">Operational Properties</p>
+<ol class="arabic simple">
+<li><p>Name</p></li>
+<li><p>Brake Group Membership {one of LEFT | CENTER | RIGHT | NOSE | TAIL |
+NONE}</p></li>
+<li><p>Max Steer Angle, in degrees</p></li>
+</ol>
+<p class="rubric">Algorithm and Approach to Modeling</p>
+<ol class="arabic simple">
+<li><p>Find the location of the uncompressed landing gear relative to the CG
+of the aircraft. Remember, the structural coordinate frame that the
+aircraft is defined in is: X positive towards the tail, Y positive
+out the right side, Z positive upwards. The locations of the various
+parts are given in inches in the config file.</p></li>
+<li><p>The vector giving the location of the gear (relative to the cg) is
+rotated 180 degrees about the Y axis to put the coordinates in body
+frame (X positive forwards, Y positive out the right side, Z positive
+downwards, with the origin at the cg). The lengths are also now given
+in feet.</p></li>
+<li><p>The new gear location is now transformed to the local coordinate
+frame using the body-to-local matrix. (Mb2l).</p></li>
+<li><p>Knowing the location of the center of gravity relative to the ground
+(height above ground level or AGL) now enables gear deflection to be
+calculated. The gear compression value is the local frame gear Z
+location value minus the height AGL. [Currently, we make the
+assumption that the gear is oriented - and the deflection occurs in -
+the Z axis only. Additionally, the vector to the landing gear is
+currently not modified - which would (correctly) move the point of
+contact to the actual compressed-gear point of contact. Eventually,
+articulated gear may be modeled, but initially an effort must be made
+to model a generic system.] As an example, say the aircraft left main
+gear location (in local coordinates) is Z = 3 feet (positive) and the
+height AGL is 2 feet. This tells us that the gear is compressed 1
+foot.</p></li>
+<li><p>If the gear is compressed, a Weight-On-Wheels (WOW) flag is set.</p></li>
+<li><p>With the compression length calculated, the compression velocity may
+now be calculated. This will be used to determine the damping force
+in the strut. The aircraft rotational rate is multiplied by the
+vector to the wheel to get a wheel velocity in body frame. That
+velocity vector is then transformed into the local coordinate frame.</p></li>
+<li><p>The aircraft cg velocity in the local frame is added to the just-
+calculated wheel velocity (due to rotation) to get a total wheel
+velocity in the local frame.</p></li>
+<li><p>The compression speed is the Z-component of the vector.</p></li>
+<li><p>With the wheel velocity vector no longer needed, it is normalized and
+multiplied by a -1 to reverse it. This will be used in the friction
+force calculation.</p></li>
+<li><p>Since the friction force takes place solely in the runway plane, the
+Z coordinate of the normalized wheel velocity vector is set to zero.</p></li>
+<li><p>The gear deflection force (the force on the aircraft acting along
+the local frame Z axis) is now calculated given the spring and
+damper coefficients, and the gear deflection speed and stroke
+length. Keep in mind that gear forces always act in the negative
+direction (in both local and body frames), and are not capable of
+generating a force in the positive sense (one that would attract the
+aircraft to the ground). So, the gear forces are always negative -
+they are limited to values of zero or less. The gear force is simply
+the negative of the sum of the spring compression length times the
+spring coefficient and the gear velocity times the damping
+coefficient.</p></li>
+<li><p>The lateral/directional force acting on the aircraft through the
+landing</p></li>
+<li><p>gear (along the local frame X and Y axes) is calculated next. First,
+the friction coefficient is multiplied by the recently calculated
+Z-force. This is the friction force. It must be given direction in
+addition to magnitude. We want the components in the local frame X
+and Y axes. From step 9, above, the conditioned wheel velocity
+vector is taken and the X and Y parts are multiplied by the friction
+force to get the X and Y components of friction.</p></li>
+<li><p>The wheel force in local frame is next converted to body frame.</p></li>
+<li><p>The moment due to the gear force is calculated by multiplying r x F
+(radius to wheel crossed into the wheel force). Both of these
+operands are in body frame.</p></li>
+</ol>
+<p class="rubric">Configuration File Format for &lt;contact&gt; Section:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;contact</span> <span class="na">type=</span><span class="s">&quot;{BOGEY | STRUCTURE}&quot;</span> <span class="na">name=</span><span class="s">&quot;{string}&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;location</span> <span class="na">unit=</span><span class="s">&quot;{IN | M}&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;x&gt;</span> {number} <span class="nt">&lt;/x&gt;</span>
+        <span class="nt">&lt;y&gt;</span> {number} <span class="nt">&lt;/y&gt;</span>
+        <span class="nt">&lt;z&gt;</span> {number} <span class="nt">&lt;/z&gt;</span>
+    <span class="nt">&lt;/location&gt;</span>
+    <span class="nt">&lt;orientation</span> <span class="na">unit=</span><span class="s">&quot;{RAD | DEG}&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;pitch&gt;</span> {number} <span class="nt">&lt;/pitch&gt;</span>
+        <span class="nt">&lt;roll&gt;</span> {number} <span class="nt">&lt;/roll&gt;</span>
+        <span class="nt">&lt;yaw&gt;</span> {number} <span class="nt">&lt;/yaw&gt;</span>
+    <span class="nt">&lt;/orientation&gt;</span>
+    <span class="nt">&lt;static_friction&gt;</span> {number} <span class="nt">&lt;/static_friction&gt;</span>
+    <span class="nt">&lt;dynamic_friction&gt;</span> {number} <span class="nt">&lt;/dynamic_friction&gt;</span>
+    <span class="nt">&lt;rolling_friction&gt;</span> {number} <span class="nt">&lt;/rolling_friction&gt;</span>
+    <span class="nt">&lt;spring_coeff</span> <span class="na">unit=</span><span class="s">&quot;{LBS/FT | N/M}&quot;</span><span class="nt">&gt;</span> {number} <span class="nt">&lt;/spring_coeff&gt;</span>
+    <span class="nt">&lt;damping_coeff</span> <span class="na">type=</span><span class="s">&quot;{ | SQUARE}&quot;</span> <span class="na">unit=</span><span class="s">&quot;{LBS/FT/SEC | N/M/SEC}&quot;</span><span class="nt">&gt;</span> {number} <span class="nt">&lt;/damping_coeff&gt;</span>
+    <span class="nt">&lt;damping_coeff_rebound</span> <span class="na">type=</span><span class="s">&quot;{ | SQUARE}&quot;</span> <span class="na">unit=</span><span class="s">&quot;{LBS/FT/SEC | N/M/SEC}&quot;</span><span class="nt">&gt;</span> {number} <span class="nt">&lt;/damping_coeff_rebound&gt;</span>
+    <span class="nt">&lt;max_steer</span> <span class="na">unit=</span><span class="s">&quot;DEG&quot;</span><span class="nt">&gt;</span> {number | 0 | 360} <span class="nt">&lt;/max_steer&gt;</span>
+    <span class="nt">&lt;brake_group&gt;</span> {NONE | LEFT | RIGHT | CENTER | NOSE | TAIL} <span class="nt">&lt;/brake_group&gt;</span>
+    <span class="nt">&lt;retractable&gt;</span>{0 | 1}<span class="nt">&lt;/retractable&gt;</span>
+    <span class="nt">&lt;table</span> <span class="na">name=</span><span class="s">&quot;{CORNERING_COEFF}&quot;</span> <span class="na">type=</span><span class="s">&quot;internal&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;tableData&gt;</span>
+            {cornering parameters}
+        <span class="nt">&lt;/tableData&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/contact&gt;</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGLGear.get_body_x_force">
+<span class="sig-name descname"><span class="pre">get_body_x_force</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGLGear.get_body_x_force" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature is not yet documented.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGLGear.get_body_y_force">
+<span class="sig-name descname"><span class="pre">get_body_y_force</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGLGear.get_body_y_force" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature is not yet documented.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGLGear.get_body_z_force">
+<span class="sig-name descname"><span class="pre">get_body_z_force</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGLGear.get_body_z_force" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature is not yet documented.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGLGear.get_steer_norm">
+<span class="sig-name descname"><span class="pre">get_steer_norm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGLGear.get_steer_norm" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature is not yet documented.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, The JSBSim team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/FGLGear.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/JSBSim-Team/jsbsim" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

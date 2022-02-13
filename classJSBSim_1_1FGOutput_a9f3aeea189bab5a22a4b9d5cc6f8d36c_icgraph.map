@@ -1,0 +1,4 @@
+<map id="GetOutputName" name="GetOutputName">
+<area shape="rect" id="node1" title="Get the name identifier to which the output will be directed." alt="" coords="216,13,344,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGFDMExec.html#a71b0dde8ab6d896a2bf48caa7b16970b" title="Retrieves the current output filename." alt="" coords="5,5,168,47"/>
+</map>

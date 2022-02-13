@@ -1,0 +1,4 @@
+<map id="GetTemperature" name="GetTemperature">
+<area shape="rect" id="node1" title="Gets the temperature of the fuel." alt="" coords="5,13,132,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGJSBBase.html#af8ad1042b82f1c0a47801d6978434b80" title="Converts from degrees Celsius to degrees Fahrenheit." alt="" coords="180,5,335,47"/>
+</map>

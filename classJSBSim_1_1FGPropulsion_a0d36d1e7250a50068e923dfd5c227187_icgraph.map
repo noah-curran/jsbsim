@@ -1,0 +1,6 @@
+<map id="GetEngine" name="GetEngine">
+<area shape="rect" id="node1" title="Retrieves an engine object pointer from the list of engines." alt="" coords="455,31,544,57"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGRotor.html#a4bc3dbf658386662ee7dc09a2a70383c" title="Constructor for FGRotor." alt="" coords="216,5,407,32"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGPropulsion.html#ac7ae9e5bb74b9fd27bd191d81e8749b2" title="Sets up the engines as running." alt="" coords="263,56,359,83"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGFDMExec.html#afaf93cada78d011829d409d0b250120b" title="Initializes the sim from the initial condition object and executes each scheduled model without integ..." alt="" coords="5,49,168,90"/>
+</map>

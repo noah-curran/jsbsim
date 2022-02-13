@@ -1,0 +1,6 @@
+<map id="GetEulerDeg" name="GetEulerDeg">
+<area shape="rect" id="node1" title="Retrieves the Euler angles." alt="" coords="247,78,351,105"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#a30c3ed98402719941d382a4511049416" title="Gets the initial roll angle." alt="" coords="5,5,199,47"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGInitialCondition.html#ae1bb0b96c67e458d329b1b71acda3a70" title="Gets the initial heading angle." alt="" coords="5,71,199,112"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGInitialCondition.html#a24bd1326d5380a1268a2bd54771633b2" title="Gets the initial pitch angle." alt="" coords="5,136,199,177"/>
+</map>

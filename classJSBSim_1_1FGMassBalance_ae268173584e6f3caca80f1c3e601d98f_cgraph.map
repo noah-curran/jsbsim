@@ -1,0 +1,4 @@
+<map id="GetPointmassInertia" name="GetPointmassInertia">
+<area shape="rect" id="node1" title="Computes the inertia contribution of a pointmass." alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGMassBalance.html#ac676bdc18d8b00dbcee4d135cd24a003" title="Conversion from the structural frame to the body frame." alt="" coords="208,5,340,32"/>
+</map>

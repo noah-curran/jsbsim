@@ -1,0 +1,4 @@
+<map id="GetLatitudeRadIC" name="GetLatitudeRadIC">
+<area shape="rect" id="node1" title="Gets the initial latitude." alt="" coords="5,13,141,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGLocation.html#a46524a57969eed72f4a7f477a22b1df9" title="Get the GEOCENTRIC latitude in radians." alt="" coords="189,5,339,47"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="GetT" name="GetT">
+<area shape="rect" id="node1" title="Transformation matrix." alt="" coords="249,64,303,91"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGLGear.html#a27044d02e736b462e84b6c61d1200f41" title="Constructor." alt="" coords="5,5,201,32"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGInitialCondition.html#a4dfc913e5d25e7e80009e7f555206354" title="Gets the initial body velocity." alt="" coords="7,57,200,98"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGQuaternion.html#ab590a88372c219caae4237b5d0b0893f" title="Conversion from Quat to Matrix." alt="" coords="25,123,182,149"/>
+</map>

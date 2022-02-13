@@ -1,0 +1,8 @@
+<map id="SetVgroundKtsIC" name="SetVgroundKtsIC">
+<area shape="rect" id="node1" title="Set ground speed initial condition in knots." alt="" coords="5,111,136,138"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#aef47a274b700f482ad7c4e75aa8e204b" title="Sets the initial ground speed." alt="" coords="184,111,317,138"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGQuaternion.html#a15a2018bc1a5faa4c85a2e27a20fa5d8" title="Retrieves cosine of the given euler angle." alt="" coords="379,5,545,47"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGQuaternion.html#a05a24cffb3dbe93f6dac60998eb3dbf9" title="Retrieves sine of the given euler angle." alt="" coords="379,71,545,112"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGQuaternion.html#ab0e5564df2ba8ac3f2db0a760e64c564" title="Backward transformation matrix." alt="" coords="379,136,545,177"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGColumnVector3.html#a4b994a872678de3097f1c86723ce92c9" title="Length of the vector." alt="" coords="365,201,559,243"/>
+</map>

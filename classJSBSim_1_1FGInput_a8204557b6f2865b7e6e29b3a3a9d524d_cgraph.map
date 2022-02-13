@@ -1,0 +1,8 @@
+<map id="SetDirectivesFile" name="SetDirectivesFile">
+<area shape="rect" id="node1" title="Adds a new input instance to the Input Manager." alt="" coords="5,107,137,134"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInput.html#a0b8d108c40ce8b06c3c849824ab18397" title="Load the input directives and adds a new input instance to the Input Manager list." alt="" coords="185,107,239,134"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1Element.html#a4fd4cb4d88046523b2cf729bf847e0e2" title="Retrieves an attribute." alt="" coords="287,5,505,47"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGInputType.html#a0b8d108c40ce8b06c3c849824ab18397" title="Init the input directives from an XML file (implement the FGModel interface)." alt="" coords="317,71,475,112"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1Element.html#a947c5ac935ae1435154c6198c46fbb55" title="Return a string that contains a description of the location where the current XML element was read fr..." alt="" coords="294,137,498,163"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGInputType.html#a6f1370cfe2ed983e54af0720b6c0b3d5" title="Set the idx for this input instance." alt="" coords="317,188,475,229"/>
+</map>

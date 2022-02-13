@@ -1,0 +1,10 @@
+<map id="Load" name="Load">
+<area shape="rect" id="node1" title="Init the output directives from an XML file (implement the FGModel interface)." alt="" coords="539,78,592,105"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGOutputFile.html#a0b8d108c40ce8b06c3c849824ab18397" title="Init the output directives from an XML file." alt="" coords="319,5,481,47"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGOutputSocket.html#a0b8d108c40ce8b06c3c849824ab18397" title="Init the output directives from an XML file." alt="" coords="309,71,491,112"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGOutput.html#aac25385536a14c4bf0ae6aafa785e218" title="Load the output directives and adds a new output instance to the Output Manager list." alt="" coords="311,154,489,181"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGOutputFG.html#ac139d3edf9cdfcdd83a3eba596995817" title="Evaluate the output directives from an XML file." alt="" coords="55,52,211,93"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGFDMExec.html#ae3203eea8354c1b3caf53395a0a5f6a7" title="Loads an aircraft model." alt="" coords="52,117,215,159"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGScript.html#affd5971385d780aef57a6f7a9645f9f7" title="Loads a script to drive JSBSim (usually in standalone mode)." alt="" coords="30,183,237,210"/>
+<area shape="rect" id="node8" href="$classJSBSim_1_1FGOutput.html#a8204557b6f2865b7e6e29b3a3a9d524d" title="Adds a new output instance to the Output Manager." alt="" coords="5,234,261,261"/>
+</map>

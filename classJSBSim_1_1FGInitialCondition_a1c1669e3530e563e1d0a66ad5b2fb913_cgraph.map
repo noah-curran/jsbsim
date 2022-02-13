@@ -1,0 +1,4 @@
+<map id="GetLatitudeDegIC" name="GetLatitudeDegIC">
+<area shape="rect" id="node1" title="Gets the initial latitude." alt="" coords="5,13,143,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGLocation.html#ad05e8b6bba74272977126b4cb96cbf59" title="Get the GEOCENTRIC latitude in degrees." alt="" coords="191,5,340,47"/>
+</map>

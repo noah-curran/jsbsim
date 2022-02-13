@@ -1,0 +1,6 @@
+<map id="GetContactPoint" name="GetContactPoint">
+<area shape="rect" id="node1" title="Get terrain contact point information below the current location." alt="" coords="249,78,377,105"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGLGear.html#ad983d4035efc81bf292e4269cd3601cc" title="The Force vector for this gear." alt="" coords="5,5,201,47"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGPropagate.html#a3554b724a9f259cb57840ae37cbec446" title="Returns the &quot;constant&quot; LocalTerrainRadius." alt="" coords="16,71,191,112"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGInitialCondition.html#a5454247df3a6df9d8b0816529d6e6529" title="Gets the initial terrain elevation." alt="" coords="7,136,200,177"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="GetAttributeValueAsNumber" name="GetAttributeValueAsNumber">
+<area shape="rect" id="node1" title="Retrieves an attribute value as a double precision real number." alt="" coords="737,213,944,239"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGPropeller.html#af055485a3f74654dae147e839447e9ad" title="Constructor for FGPropeller." alt="" coords="519,5,671,47"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGTable.html#a6408aca30b15b5fbee7544f0e322263b" title="The constructor for a table." alt="" coords="501,71,689,98"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGOutputFG.html#ac139d3edf9cdfcdd83a3eba596995817" title="Evaluate the output directives from an XML file." alt="" coords="31,144,187,185"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGOutputSocket.html#a0b8d108c40ce8b06c3c849824ab18397" title="Init the output directives from an XML file." alt="" coords="266,173,447,215"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGOutputType.html#a0b8d108c40ce8b06c3c849824ab18397" title="Init the output directives from an XML file (implement the FGModel interface)." alt="" coords="511,237,679,279"/>
+<area shape="rect" id="node9" href="$classJSBSim_1_1FGScript.html#affd5971385d780aef57a6f7a9645f9f7" title="Loads a script to drive JSBSim (usually in standalone mode)." alt="" coords="5,355,212,382"/>
+<area shape="rect" id="node10" href="$classJSBSim_1_1FGFCS.html#a0b8d108c40ce8b06c3c849824ab18397" title="Loads the Flight Control System." alt="" coords="516,395,675,422"/>
+<area shape="rect" id="node11" href="$classJSBSim_1_1FGInitialCondition.html#af4c905db84f046ff017aaa3cb86a3541" title="Loads the initial conditions." alt="" coords="260,417,453,459"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGOutputFile.html#a0b8d108c40ce8b06c3c849824ab18397" title="Init the output directives from an XML file." alt="" coords="276,239,437,280"/>
+<area shape="rect" id="node8" href="$classJSBSim_1_1FGOutput.html#aac25385536a14c4bf0ae6aafa785e218" title="Load the output directives and adds a new output instance to the Output Manager list." alt="" coords="268,305,445,331"/>
+</map>

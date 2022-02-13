@@ -1,0 +1,4 @@
+<map id="SetGeodLatitudeRadIC" name="SetGeodLatitudeRadIC">
+<area shape="rect" id="node1" title="Sets the initial geodetic latitude." alt="" coords="223,5,391,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#aba2e10b224998e7ecd7edffdc6869c39" title="Sets the initial geodetic latitude." alt="" coords="5,5,175,32"/>
+</map>

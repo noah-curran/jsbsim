@@ -1,0 +1,9 @@
+<map id="InitModel" name="InitModel">
+<area shape="rect" id="node1" title="Initializes the FGPropagate class after instantiation and prior to first execution." alt="" coords="5,209,88,235"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInertial.html#a362f841fccd857fbf35aecd9f0c38418" title="Set the altitude above ground level." alt="" coords="136,169,276,211"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGLocation.html#a0697137d8c02a8b84f695d12317347a6" title="Sets the semimajor and semiminor axis lengths for this planet." alt="" coords="332,267,481,308"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGLocation.html#ad6d787090b71419e91678ceb91c6ef1f" title="Gets the geodetic altitude in feet." alt="" coords="332,5,481,47"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGLocation.html#a7331ed56fdad41129ef4e74dcc2eff82" title="Get the GEODETIC latitude in radians." alt="" coords="324,71,489,112"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGLocation.html#a804f3713901ade7ce31549d97d197583" title="Get the longitude." alt="" coords="332,136,481,177"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGLocation.html#af0f103b7c1f4c5c8cdceb15a55305fe2" title="Sets the longitude, latitude and the distance above the reference spheroid." alt="" coords="326,201,487,243"/>
+</map>

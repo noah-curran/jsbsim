@@ -1,0 +1,10 @@
+<map id="SetDewPoint" name="SetDewPoint">
+<area shape="rect" id="node1" title="Sets the dew point." alt="" coords="5,91,111,117"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGStandardAtmosphere.html#af10797f6dc49e9e5977e364d3a2153f0" title="Calculates the pressure altitude given any temperature or pressure bias." alt="" coords="163,7,353,33"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGStandardAtmosphere.html#adae3ed16af6092c17c0cb5bf79f1b6f3" title="Calculate the pressure of water vapor with the Magnus formula." alt="" coords="170,61,346,88"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGAtmosphere.html#a13ab16e26033bc6cfd83c7c6e4edc6bd" title="Converts to Rankine from one of several unit systems." alt="" coords="171,113,345,154"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGStandardAtmosphere.html#aec7ab226284ca4b879edfd5b93f0e864" title="Validate the value of the vapor mass fraction." alt="" coords="159,179,357,205"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGStandardAtmosphere.html#a05ce8403c7535cca4ac4ad9203ba9254" title="Convert a geopotential altitude to a geometric altitude." alt="" coords="413,5,555,32"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGJSBBase.html#a9daa4b8416feb6ef2964aacbb1ad07e7" title="Converts from degrees Rankine to degrees Celsius." alt="" coords="407,57,561,98"/>
+<area shape="rect" id="node8" href="$classJSBSim_1_1FGStandardAtmosphere.html#aa608e93e5a0e8bc846d343ab4ca84cff" title="Convert a geometric altitude to a geopotential altitude." alt="" coords="405,179,563,205"/>
+</map>

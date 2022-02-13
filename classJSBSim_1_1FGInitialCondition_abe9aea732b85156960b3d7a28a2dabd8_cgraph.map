@@ -1,0 +1,4 @@
+<map id="SetPhiDegIC" name="SetPhiDegIC">
+<area shape="rect" id="node1" title="Sets the roll angle initial condition in degrees." alt="" coords="5,5,108,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#ad137279db0fb4c146f24d3c50c92141c" title="Sets the initial roll angle." alt="" coords="156,5,257,32"/>
+</map>

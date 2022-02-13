@@ -1,0 +1,7 @@
+<map id="RankineToCelsius" name="RankineToCelsius">
+<area shape="rect" id="node1" title="Converts from degrees Rankine to degrees Celsius." alt="" coords="563,75,699,102"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGStandardAtmosphere.html#adae3ed16af6092c17c0cb5bf79f1b6f3" title="Calculate the pressure of water vapor with the Magnus formula." alt="" coords="284,39,515,80"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGAuxiliary.html#a764e8c6d39b827d2ad03f570a2fc37e6" title="Runs the Auxiliary routines; called by the Executive Can pass in a value indicating if the executive ..." alt="" coords="307,105,491,131"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGStandardAtmosphere.html#a6b680ec4f2cb19d546928fca48e58176" title="Calculate the atmosphere for the given altitude." alt="" coords="5,5,236,47"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGStandardAtmosphere.html#ae383eeb62b1743fbe4f24cd0af2c397f" title="Sets the dew point." alt="" coords="5,71,236,112"/>
+</map>

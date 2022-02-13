@@ -1,0 +1,4 @@
+<map id="SetAlphaRadIC" name="SetAlphaRadIC">
+<area shape="rect" id="node1" title="Sets the initial angle of attack." alt="" coords="172,5,291,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#a5c958bfa2833878f77a13e857e446534" title="Sets angle of attack initial condition in degrees." alt="" coords="5,5,124,32"/>
+</map>

@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>FGAtmosphere &#8212; JSBSim 1.1.11 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FGAuxiliary" href="FGAuxiliary.html" />
+    <link rel="prev" title="FGAircraft" href="FGAircraft.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo_JSBSIM_globe.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="index.html">JSBSim</a></h1>
+
+
+
+<p class="blurb">An open source flight dynamics & control software library</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=JSBSim-Team&repo=jsbsim&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a class="badge" href="https://travis-ci.org/JSBSim-Team/jsbsim">
+    <img
+        alt="https://secure.travis-ci.org/JSBSim-Team/jsbsim.svg?branch=master"
+        src="https://secure.travis-ci.org/JSBSim-Team/jsbsim.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="FGAerodynamics.html">FGAerodynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAircraft.html">FGAircraft</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FGAtmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAuxiliary.html">FGAuxiliary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGEngine.html">FGEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGFDMExec.html">FGFDMExec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGGroundReactions.html">FGGroundReactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGJSBBase.html">FGJSBBase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGLGear.html">FGLGear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGMassBalance.html">FGMassBalance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropagate.html">FGPropagate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropertyManager.html">FGPropertyManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropulsion.html">FGPropulsion</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="FGAircraft.html" title="previous chapter">FGAircraft</a></li>
+      <li>Next: <a href="FGAuxiliary.html" title="next chapter">FGAuxiliary</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="fgatmosphere">
+<span id="id1"></span><h1>FGAtmosphere<a class="headerlink" href="#fgatmosphere" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="jsbsim.FGAtmosphere">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">jsbsim.</span></span><span class="sig-name descname"><span class="pre">FGAtmosphere</span></span><a class="headerlink" href="#jsbsim.FGAtmosphere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Models an empty, abstract base atmosphere class.</p>
+<p class="rubric">Properties</p>
+<ul class="simple">
+<li><p><strong>atmosphere/T-R</strong> The current modeled temperature in degrees Rankine.</p></li>
+<li><p><strong>atmosphere/rho-slugs_ft3</strong></p></li>
+<li><p><strong>atmosphere/P-psf</strong></p></li>
+<li><p><strong>atmosphere/a-fps</strong></p></li>
+<li><p><strong>atmosphere/T-sl-R</strong></p></li>
+<li><p><strong>atmosphere/rho-sl-slugs_ft3</strong></p></li>
+<li><p><strong>atmosphere/P-sl-psf</strong></p></li>
+<li><p><strong>atmosphere/a-sl-fps</strong></p></li>
+<li><p><strong>atmosphere/theta</strong></p></li>
+<li><p><strong>atmosphere/sigma</strong></p></li>
+<li><p><strong>atmosphere/delta</strong></p></li>
+<li><p><strong>atmosphere/a-ratio</strong></p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGAtmosphere.get_temperature">
+<span class="sig-name descname"><span class="pre">get_temperature</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGAtmosphere.get_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the actual modeled temperature in degrees Rankine at a specified altitude.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>altitude</strong> – The altitude above sea level (ASL) in feet.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Modeled temperature in degrees Rankine at the specified
+altitude.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGAtmosphere.set_pressure_SL">
+<span class="sig-name descname"><span class="pre">set_pressure_SL</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGAtmosphere.set_pressure_SL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the sea level pressure for modeling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pressure</strong> – The pressure in the units specified.</p></li>
+<li><p><strong>unit</strong> – the unit of measure that the specified pressure is
+supplied in.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGAtmosphere.set_temperature">
+<span class="sig-name descname"><span class="pre">set_temperature</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGAtmosphere.set_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the temperature at the supplied altitude.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – The temperature value in the unit provided.</p></li>
+<li><p><strong>h</strong> – The altitude in feet above sea level.</p></li>
+<li><p><strong>unit</strong> – The unit of the temperature.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, The JSBSim team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/FGAtmosphere.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/JSBSim-Team/jsbsim" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

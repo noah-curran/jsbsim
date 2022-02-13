@@ -1,0 +1,4 @@
+<map id="SetTemperatureSL" name="SetTemperatureSL">
+<area shape="rect" id="node1" title="Sets the Sea Level temperature." alt="" coords="5,5,145,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGAtmosphere.html#a13ab16e26033bc6cfd83c7c6e4edc6bd" title="Converts to Rankine from one of several unit systems." alt="" coords="193,5,333,32"/>
+</map>

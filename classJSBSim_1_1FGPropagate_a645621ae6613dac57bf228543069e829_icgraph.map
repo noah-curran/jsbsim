@@ -1,0 +1,7 @@
+<map id="GetAltitudeASL" name="GetAltitudeASL">
+<area shape="rect" id="node1" title="Returns the current altitude above sea level." alt="" coords="484,64,604,91"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGPropagate.html#aeb50df5f9743ef416f0b4b700ade49e5" title="Returns the current altitude above sea level." alt="" coords="262,5,429,32"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGOutputSocket.html#a0d7143a7146c3401f1c71e68d68097d6" title="Generates the output." alt="" coords="255,57,436,98"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1MSIS.html#a35ac9aa2a24b4c76037dcc874cdfdcdd" title="Runs the MSIS&#45;00 atmosphere model; called by the Executive Can pass in a value indicating if the exec..." alt="" coords="275,123,416,149"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGScript.html#a013aec27fe80cda32db192d2ebb96e59" title="This function is called each pass through the executive Run() method IF scripting is enabled." alt="" coords="5,5,207,32"/>
+</map>

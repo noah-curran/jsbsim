@@ -1,0 +1,13 @@
+<map id="FGLGear" name="FGLGear">
+<area shape="rect" id="node1" title="Landing gear model." alt="" coords="580,202,659,229"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGSurface.html" title="Base class for all surface properties." alt="" coords="425,151,515,178"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGForce.html" title="Utility class that aids in the conversion of forces between coordinate systems and calculation of mom..." alt="" coords="433,202,507,229"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGJSBBase.html" title="JSBSim Base class." alt="" coords="5,54,99,81"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGFDMExec.html" title="Encapsulates the JSBSim simulation executive." alt="" coords="167,54,267,81"/>
+<area shape="rect" id="node10" href="$classJSBSim_1_1FGLocation.html" title="FGLocation holds an arbitrary location in the Earth centered Earth fixed reference frame (ECEF)." alt="" coords="170,477,265,503"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGColumnVector3.html" title="This class implements a 3 element column vector." alt="" coords="148,177,287,203"/>
+<area shape="rect" id="node9" href="$structJSBSim_1_1FGLGear_1_1Inputs.html" title=" " alt="" coords="439,382,501,409"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGMassBalance.html" title="Models weight, balance and moment of inertia information." alt="" coords="154,262,281,289"/>
+<area shape="rect" id="node8" href="$classJSBSim_1_1FGMatrix33.html" title="Handles matrix math operations." alt="" coords="168,346,267,373"/>
+<area shape="rect" id="node11" title=" " alt="" coords="149,426,286,453"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="GetGeodLatitudeDeg" name="GetGeodLatitudeDeg">
+<area shape="rect" id="node1" title="Get the GEODETIC latitude in degrees." alt="" coords="247,13,405,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#a8d913d50b06a1f8c9f6c0f1f1b75a755" title="Gets the initial geodetic latitude." alt="" coords="5,5,199,47"/>
+</map>

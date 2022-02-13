@@ -1,0 +1,10 @@
+<map id="SetIdx" name="SetIdx">
+<area shape="rect" id="node1" title="Set the idx for this output instance." alt="" coords="5,71,68,98"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGOutputType.html#adb242c9bce9b5f32874da035829151ef" title="Get the output rate in Hz for this output." alt="" coords="187,17,279,43"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGOutputType.html#a61ff3abe8b66c9c5b53026b1daded2e3" title="Set the output rate for this output instances." alt="" coords="188,71,279,98"/>
+<area shape="rect" id="node8" href="$classJSBSim_1_1FGPropertyManager.html#a7f3e912a3921eddd2571b5ca19d4c751" title="Tie a property to an external variable." alt="" coords="116,122,351,149"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGFDMExec.html#a738179a34b72fa5a9a72ddafc2e4adae" title="Returns the simulation delta T." alt="" coords="414,5,577,47"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGOutputType.html#aba9ec81f447e9a505fe732037c0f79e7" title="Disables the output generation." alt="" coords="460,71,531,98"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGOutputType.html#aebec479a7234241b3b664d7cfcb43401" title="Enables the output generation." alt="" coords="462,122,529,149"/>
+<area shape="rect" id="node7" href="$classJSBSim_1_1FGModel.html#aa869d818d1cc23946f954079b88cbd2a" title="Set the ouput rate for the model in frames." alt="" coords="399,173,592,199"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="SetOutputDirectives" name="SetOutputDirectives">
+<area shape="rect" id="node1" title="Sets the output (logging) mechanism for this run." alt="" coords="5,5,159,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGOutput.html#a8204557b6f2865b7e6e29b3a3a9d524d" title="Adds a new output instance to the Output Manager." alt="" coords="207,5,463,32"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGOutput.html#aac25385536a14c4bf0ae6aafa785e218" title="Load the output directives and adds a new output instance to the Output Manager list." alt="" coords="511,5,688,32"/>
+</map>

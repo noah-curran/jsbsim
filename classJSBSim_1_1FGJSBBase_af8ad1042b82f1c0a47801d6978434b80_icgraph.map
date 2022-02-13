@@ -1,0 +1,4 @@
+<map id="CelsiusToFahrenheit" name="CelsiusToFahrenheit">
+<area shape="rect" id="node1" title="Converts from degrees Celsius to degrees Fahrenheit." alt="" coords="291,5,441,32"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGTank.html#a214dcdce5277cf592fa2d1deca9c4fdf" title="Gets the temperature of the fuel." alt="" coords="5,5,243,32"/>
+</map>

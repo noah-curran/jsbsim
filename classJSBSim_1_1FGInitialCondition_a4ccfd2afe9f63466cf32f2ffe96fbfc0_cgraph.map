@@ -1,0 +1,5 @@
+<map id="SetVtrueKtsIC" name="SetVtrueKtsIC">
+<area shape="rect" id="node1" title="Set true airspeed initial condition in knots." alt="" coords="5,13,117,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#aa27763a4d398c95e7b346b824153d11e" title="Sets the initial true airspeed." alt="" coords="165,13,280,39"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGQuaternion.html#ab0e5564df2ba8ac3f2db0a760e64c564" title="Backward transformation matrix." alt="" coords="328,5,495,47"/>
+</map>

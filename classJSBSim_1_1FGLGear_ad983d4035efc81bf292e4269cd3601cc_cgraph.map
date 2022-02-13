@@ -1,0 +1,8 @@
+<map id="GetBodyForces" name="GetBodyForces">
+<area shape="rect" id="node1" title="The Force vector for this gear." alt="" coords="5,111,125,138"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInertial.html#a36b96e61eb18cfda477d67b0a01eac4e" title="Get terrain contact point information below the current location." alt="" coords="185,5,325,47"/>
+<area shape="rect" id="node3" href="$classJSBSim_1_1FGFDMExec.html#a93876fb8e8a2302e3880f9ebfb3ce6d5" title="Returns the FGInertial pointer." alt="" coords="173,71,336,112"/>
+<area shape="rect" id="node4" href="$classJSBSim_1_1FGLocation.html#ac110f47ca7431b41e789c8d648937d91" title="Conversion from Local frame coordinates to a location in the earth centered and fixed frame." alt="" coords="180,136,329,177"/>
+<area shape="rect" id="node5" href="$classJSBSim_1_1FGMatrix33.html#a039718b92a595f3eafaafb2091cfa52a" title="Transposed matrix." alt="" coords="179,201,331,243"/>
+<area shape="rect" id="node6" href="$classJSBSim_1_1FGMatrix33.html#ad06c41f43d86e4d825435a09c74d77ce" title="Default initializer." alt="" coords="384,201,536,243"/>
+</map>

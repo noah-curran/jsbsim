@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>FGAerodynamics &#8212; JSBSim 1.1.11 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FGAircraft" href="FGAircraft.html" />
+    <link rel="prev" title="JSBSim Flight Dynamics Model" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo_JSBSIM_globe.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="index.html">JSBSim</a></h1>
+
+
+
+<p class="blurb">An open source flight dynamics & control software library</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=JSBSim-Team&repo=jsbsim&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a class="badge" href="https://travis-ci.org/JSBSim-Team/jsbsim">
+    <img
+        alt="https://secure.travis-ci.org/JSBSim-Team/jsbsim.svg?branch=master"
+        src="https://secure.travis-ci.org/JSBSim-Team/jsbsim.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FGAerodynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAircraft.html">FGAircraft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAtmosphere.html">FGAtmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGAuxiliary.html">FGAuxiliary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGEngine.html">FGEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGFDMExec.html">FGFDMExec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGGroundReactions.html">FGGroundReactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGJSBBase.html">FGJSBBase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGLGear.html">FGLGear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGMassBalance.html">FGMassBalance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropagate.html">FGPropagate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropertyManager.html">FGPropertyManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FGPropulsion.html">FGPropulsion</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">JSBSim Flight Dynamics Model</a></li>
+      <li>Next: <a href="FGAircraft.html" title="next chapter">FGAircraft</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="fgaerodynamics">
+<span id="id1"></span><h1>FGAerodynamics<a class="headerlink" href="#fgaerodynamics" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="jsbsim.FGAerodynamics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">jsbsim.</span></span><span class="sig-name descname"><span class="pre">FGAerodynamics</span></span><a class="headerlink" href="#jsbsim.FGAerodynamics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encapsulates the aerodynamic calculations.</p>
+<p>This class owns and contains the list of force/coefficients that define
+the aerodynamic properties of an aircraft. Here also, such unique
+phenomena as ground effect, aerodynamic reference point shift, and
+maximum lift curve tailoff are handled.</p>
+<p class="rubric">Configuration File Format for &lt;aerodynamics&gt; Section:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;aerodynamics&gt;</span>
+   <span class="nt">&lt;alphalimits</span> <span class="na">unit=</span><span class="s">&quot;{RAD | DEG}&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;min&gt;</span> {number} <span class="nt">&lt;/min&gt;</span>
+     <span class="nt">&lt;max&gt;</span> {number} <span class="nt">&lt;/max&gt;</span>
+   <span class="nt">&lt;/alphalimits&gt;</span>
+   <span class="nt">&lt;hysteresis_limits</span> <span class="na">unit=</span><span class="s">&quot;{RAD | DEG}&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;min&gt;</span> {number} <span class="nt">&lt;/min&gt;</span>
+     <span class="nt">&lt;max&gt;</span> {number} <span class="nt">&lt;/max&gt;</span>
+   <span class="nt">&lt;/hysteresis_limits&gt;</span>
+   <span class="nt">&lt;aero_ref_pt_shift_x&gt;</span>  
+     <span class="nt">&lt;function&gt;</span>
+       {function contents}
+     <span class="nt">&lt;/function&gt;</span> 
+   <span class="nt">&lt;/aero_ref_pt_shift_x&gt;</span>  
+   <span class="nt">&lt;function&gt;</span>
+     {function contents}
+   <span class="nt">&lt;/function&gt;</span>
+   <span class="nt">&lt;axis</span> <span class="na">name=</span><span class="s">&quot;{LIFT | DRAG | SIDE | ROLL | PITCH | YAW}&quot;</span><span class="nt">&gt;</span>
+     {force or moment definitions}
+   <span class="nt">&lt;/axis&gt;</span>
+   {additional axis definitions}
+<span class="nt">&lt;/aerodynamics&gt;</span>
+</pre></div>
+</div>
+<p>Optionally two other coordinate systems may be used.</p>
+<ol class="arabic simple">
+<li><p>Body coordinate system:</p></li>
+</ol>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;axis</span> <span class="na">name=</span><span class="s">&quot;{X | Y | Z}&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Axial-Normal coordinate system:</p></li>
+</ol>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;axis</span> <span class="na">name=</span><span class="s">&quot;{AXIAL | NORMAL | SIDE}&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+<p>Systems may NOT be combined, or a load error will occur.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGAerodynamics.get_forces">
+<span class="sig-name descname"><span class="pre">get_forces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGAerodynamics.get_forces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the aerodynamic force for an axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> – Axis index. This could be 0, 1, or 2, or one of the axis
+enums: eX, eY, eZ.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the force acting on an axis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="jsbsim.FGAerodynamics.get_moments_MRC">
+<span class="sig-name descname"><span class="pre">get_moments_MRC</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jsbsim.FGAerodynamics.get_moments_MRC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the aerodynamic moment about the Moment Reference Center for an axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the moment about a single axis (as described also in the
+similar call to GetForces(int n).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, The JSBSim team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/FGAerodynamics.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/JSBSim-Team/jsbsim" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,4 @@
+<map id="SetTerrainElevation" name="SetTerrainElevation">
+<area shape="rect" id="node1" title="Set the terrain elevation above sea level." alt="" coords="247,13,395,39"/>
+<area shape="rect" id="node2" href="$classJSBSim_1_1FGInitialCondition.html#a93ec4bc417c0505b4548f6a63af82bdf" title="Sets the initial terrain elevation." alt="" coords="5,5,199,47"/>
+</map>
