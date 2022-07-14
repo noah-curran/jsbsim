@@ -139,8 +139,18 @@ void JSBSimInterface::Update()
 bool JSBSimInterface::AddInputPropertyNode(std::string property)
 {
 
-	FGPropertyNode* node = pm->GetNode(property);
-	if (node == NULL || !node->getAttribute(FGPropertyNode::Attribute::WRITE)) return false;
+	bool nodeExists = pm->HasNode(property);
+	FGPropertyNode* node;
+
+	if (nodeExists) {
+		node = pm->GetNode(property);
+		if (!node->getAttribute(FGPropertyNode::Attribute::WRITE)) return false;
+	
+	// Create if it doesn't exist
+	} else {
+		node = pm->GetNode(property, true);
+		node->setDoubleValue(0.0);
+	}
 
 	inputPort.push_back(node);
 	return true;

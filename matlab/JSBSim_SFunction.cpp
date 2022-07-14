@@ -285,6 +285,7 @@ static void mdlProcessParameters(SimStruct *S)
     }
 
     // Check that there are input and outputs properties.
+    // TODO: There does not need to be an input property when use_script is true.
     Element* inputElement = document->FindElement("input");
     if (!inputElement) {
         ssSetErrorStatus(S, "Please define an <input> property for the I/O config file.\n");
@@ -413,6 +414,17 @@ static void mdlInitializeConditions(SimStruct *S)
     JSBSimInterface *JII = new JSBSimInterface(delta_t, numOutputs);
     ssGetPWork(S)[0] = (void *) JII;
 
+    // Get the user provided input/output config.
+    std::string io_config_file = getMxArrayString(io_config_file_name);
+
+    FGXMLFileRead XMLFileRead;
+    Element* document = XMLFileRead.LoadXMLDocument(SGPath(io_config_file));
+
+    int i;
+    std::string prop;
+    Element* inputElement;
+    Element* propElement;
+
     // Check if a script file is given in Simulink.
     // If not, initialize an aircraft
     if (use_script) {
@@ -430,6 +442,23 @@ static void mdlInitializeConditions(SimStruct *S)
             ssSetErrorStatus(S, "Flight script could not be loaded.\n");
             return;
         }
+
+        // Add input properties JSBSim should take in. Since no script is supplied,
+        // the inputs are auxillary information to the script and must not exist.
+        inputElement = document->FindElement("input");
+        propElement = inputElement->FindElement("property");
+        for (i = 0; i < inputSize; i++) {
+            prop = propElement->GetDataLine();
+            if (!JII->AddInputPropertyNode(prop)) {
+                ssSetErrorStatus(S, "Could not add property from XML file to input port.\n"
+                        "HINT: When a script is supplied, you can only use properties that "
+                        "don't exist for this port.\n");
+                    return;
+            }
+
+            propElement = inputElement->FindNextElement("property");
+        }
+
     } else {
 
         // Open the supplied aircraft file.
@@ -448,28 +477,22 @@ static void mdlInitializeConditions(SimStruct *S)
             ssSetErrorStatus(S, "Reset file could not be loaded.\n");
             return;
         }
-    }
-    
-    // Get the user provided input/output config.
-    std::string io_config_file = getMxArrayString(io_config_file_name);
 
-    FGXMLFileRead XMLFileRead;
-    Element* document = XMLFileRead.LoadXMLDocument(SGPath(io_config_file));
+        // Add input properties JSBSim should take in. Since no script is supplied,
+        // the inputs are what will directly control the aircraft and must exist.
+        inputElement = document->FindElement("input");
+        propElement = inputElement->FindElement("property");
+        for (i = 0; i < inputSize; i++) {
+            prop = propElement->GetDataLine();
+            if (!JII->AddInputPropertyNode(prop)) {
+                ssSetErrorStatus(S, "Could not add property from XML file to input port.\n"
+                        "HINT: When no script is supplied, you can only use properties that "
+                        "exist and that are WRITE-only for this port.\n");
+                    return;
+            }
 
-    // Add input properties JSBSim should take in.
-    int i;
-    std::string prop;
-    Element* inputElement = document->FindElement("input");
-    Element* propElement = inputElement->FindElement("property");
-    for (i = 0; i < inputSize; i++) {
-        prop = propElement->GetDataLine();
-        if (!JII->AddInputPropertyNode(prop)) {
-            ssSetErrorStatus(S, "Could not add property from XML file to input port.\n"
-                    "HINT: You can only use properties that exist and that are WRITE-only for this port.\n");
-                return;
+            propElement = inputElement->FindNextElement("property");
         }
-
-        propElement = inputElement->FindNextElement("property");
     }
 
     // If the weather element exists, add input properties for atmosphere JSBSim should take in.
