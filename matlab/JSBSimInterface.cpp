@@ -190,6 +190,7 @@ bool JSBSimInterface::CopyInputControlsToJSBSim(std::vector<double> controls) {
 
 	FGPropertyNode* node;
 	for (int i = 0; i < inputPort.size(); i++) {
+		if (controls[i] == std::numeric_limits<double>::min()) continue;
 		node = inputPort.at(i);
 		switch (node->getType()) {
 			case simgear::props::BOOL:
@@ -223,6 +224,7 @@ bool JSBSimInterface::CopyInputWeatherToJSBSim(std::vector<double> weather) {
 
 	FGPropertyNode* node;
 	for (int i = 0; i < weatherPort.size(); i++) {
+		if (weather[i] == std::numeric_limits<double>::min()) continue;
 		node = weatherPort.at(i);
 		switch (node->getType()) {
 			case simgear::props::BOOL:
